@@ -5,6 +5,7 @@ import Features from "./components/Features";
 import Screenshots from "./components/Screenshots";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import DataDeletion from "./components/DataDeletion";
 import NotFound from "./components/NotFound";
 
 export default function App() {
@@ -92,6 +93,8 @@ export default function App() {
       <main className="flex-grow">
         {currentPath === "/privacy" ? (
           <PrivacyPolicy onBackToHome={() => navigate("/")} />
+        ) : currentPath === "/delete-data" ? (
+          <DataDeletion onBackToHome={() => navigate("/")} />
         ) : currentPath === "/" ? (
           <div className="animate-fade-in">
             {/* 1. Hero Section + Interactive Simulator */}
