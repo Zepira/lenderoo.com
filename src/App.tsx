@@ -5,6 +5,7 @@ import Features from "./components/Features";
 import Screenshots from "./components/Screenshots";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import NotFound from "./components/NotFound";
 
 export default function App() {
   // Global website dark mode state (defaulting to Light Mode for premium feel)
@@ -18,9 +19,16 @@ export default function App() {
     return false;
   });
 
-  // Client-side lightweight routing
+  // Client-side lightweight routing — decode GitHub Pages 404.html redirect
   const [currentPath, setCurrentPath] = useState<string>(() => {
     if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const redirected = params.get("p");
+      if (redirected) {
+        const restored = decodeURIComponent(redirected);
+        window.history.replaceState({}, "", restored);
+        return restored;
+      }
       return window.location.pathname;
     }
     return "/";
@@ -84,7 +92,7 @@ export default function App() {
       <main className="flex-grow">
         {currentPath === "/privacy" ? (
           <PrivacyPolicy onBackToHome={() => navigate("/")} />
-        ) : (
+        ) : currentPath === "/" ? (
           <div className="animate-fade-in">
             {/* 1. Hero Section + Interactive Simulator */}
             <Hero />
@@ -129,6 +137,8 @@ export default function App() {
               </div>
             </section>
           </div>
+        ) : (
+          <NotFound onNavigate={navigate} />
         )}
       </main>
 
