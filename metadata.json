@@ -1,0 +1,6 @@
+{
+  "name": "Lenderoo",
+  "description": "Lenderoo is a social lending app that lets users manage a personal library of items (books, tools, games, etc.) and lend them to friends.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
