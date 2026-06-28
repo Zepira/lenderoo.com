@@ -57,11 +57,19 @@ export default function Footer({ onNavigate, onScrollToTop }: FooterProps) {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={handlePrivacyClick}
                   className="hover:text-white transition-colors text-xs cursor-pointer text-left"
                 >
                   Privacy Policy (Google Play submission)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => { onNavigate("/delete-data"); onScrollToTop(); }}
+                  className="hover:text-white transition-colors text-xs cursor-pointer text-left"
+                >
+                  Data Deletion Request
                 </button>
               </li>
               <li>
