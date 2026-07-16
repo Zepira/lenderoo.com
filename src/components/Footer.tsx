@@ -58,6 +58,14 @@ export default function Footer({ onNavigate, onScrollToTop }: FooterProps) {
               </li>
               <li>
                 <button
+                  onClick={() => { onNavigate("/roadmap"); onScrollToTop(); }}
+                  className="hover:text-white transition-colors text-xs cursor-pointer text-left"
+                >
+                  Roadmap & Release Notes
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={handlePrivacyClick}
                   className="hover:text-white transition-colors text-xs cursor-pointer text-left"
                 >

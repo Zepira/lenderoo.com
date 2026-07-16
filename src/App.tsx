@@ -6,6 +6,7 @@ import Screenshots from "./components/Screenshots";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import DataDeletion from "./components/DataDeletion";
+import Roadmap from "./components/Roadmap";
 import NotFound from "./components/NotFound";
 
 export default function App() {
@@ -95,6 +96,8 @@ export default function App() {
           <PrivacyPolicy onBackToHome={() => navigate("/")} />
         ) : currentPath === "/delete-data" ? (
           <DataDeletion onBackToHome={() => navigate("/")} />
+        ) : currentPath === "/roadmap" ? (
+          <Roadmap onBackToHome={() => navigate("/")} />
         ) : currentPath === "/" ? (
           <div className="animate-fade-in">
             {/* 1. Hero Section + Interactive Simulator */}

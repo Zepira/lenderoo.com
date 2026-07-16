@@ -43,6 +43,11 @@ export default function Navbar({
     onNavigate("/privacy");
   };
 
+  const handleRoadmapClick = () => {
+    setMobileMenuOpen(false);
+    onNavigate("/roadmap");
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,6 +79,16 @@ export default function Navbar({
                 {item.label}
               </button>
             ))}
+            <button
+              onClick={handleRoadmapClick}
+              className={`text-sm font-semibold transition-colors cursor-pointer ${
+                currentPath === "/roadmap"
+                  ? "text-indigo-600 dark:text-indigo-400"
+                  : "text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400"
+              }`}
+            >
+              Roadmap
+            </button>
             <button
               onClick={handlePrivacyClick}
               className={`text-sm font-semibold transition-colors cursor-pointer ${
@@ -141,6 +156,16 @@ export default function Navbar({
               {item.label}
             </button>
           ))}
+          <button
+            onClick={handleRoadmapClick}
+            className={`block w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer ${
+              currentPath === "/roadmap"
+                ? "bg-indigo-50/80 text-indigo-600 dark:bg-slate-900/60 dark:text-indigo-400"
+                : "text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 dark:text-slate-300 dark:hover:bg-slate-900/60 dark:hover:text-indigo-400"
+            }`}
+          >
+            Roadmap
+          </button>
           <button
             onClick={handlePrivacyClick}
             className={`block w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer ${
