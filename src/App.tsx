@@ -114,13 +114,13 @@ export default function App() {
             </div>
 
             {/* 4. Bottom Download CTA banner */}
-            <section className="py-16 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white relative overflow-hidden">
+            <section className="py-16 bg-gradient-to-r from-[#00BFA6] to-[#0da48d] text-white relative overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_50%)] pointer-events-none"></div>
               <div className="max-w-4xl mx-auto px-4 text-center space-y-6 relative">
                 <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
                   Start Sharing with Lenderoo Today
                 </h2>
-                <p className="text-base sm:text-lg text-indigo-100 max-w-2xl mx-auto">
+                <p className="text-base sm:text-lg text-teal-100 max-w-2xl mx-auto">
                   Why buy a tool you'll use once, or a book that will sit on a shelf? Join your friends on Lenderoo and start sharing household resources sustainably.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
@@ -128,14 +128,14 @@ export default function App() {
                     href="https://play.google.com/store/apps/details?id=com.zepira.lenderoo"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-white hover:bg-indigo-50 text-indigo-600 font-extrabold text-sm px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl active:scale-98 transition-all cursor-pointer"
+                    className="inline-flex items-center gap-2 bg-white hover:bg-teal-50 text-teal-600 font-extrabold text-sm px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl active:scale-98 transition-all cursor-pointer"
                   >
                     <span>Download on Google Play</span>
                     <span className="text-xs opacity-70">com.zepira.lenderoo</span>
                   </a>
                   <button
                     onClick={() => navigate("/privacy")}
-                    className="text-sm text-indigo-100 hover:text-white underline underline-offset-4 cursor-pointer font-semibold"
+                    className="text-sm text-teal-100 hover:text-white underline underline-offset-4 cursor-pointer font-semibold"
                   >
                     Review Play Store Privacy Policy
                   </button>

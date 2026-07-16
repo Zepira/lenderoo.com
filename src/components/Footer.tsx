@@ -25,12 +25,12 @@ export default function Footer({ onNavigate, onScrollToTop }: FooterProps) {
               onClick={() => { onNavigate("/"); onScrollToTop(); }}
               className="flex items-center gap-3 cursor-pointer group w-fit"
             >
-              <div className="w-8 h-8 bg-[#6366f1] rounded-lg flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm">
+              <div className="w-8 h-8 bg-[#00BFA6] rounded-lg flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm">
                 <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center overflow-hidden">
-                  <KangarooLogo size={10} variant="silhouette" className="text-[#6366f1]" />
+                  <KangarooLogo size={10} variant="silhouette" className="text-[#00BFA6]" />
                 </div>
               </div>
-              <span className="font-black text-base tracking-tight text-white group-hover:text-indigo-400 transition-colors">
+              <span className="font-black text-base tracking-tight text-white group-hover:text-teal-400 transition-colors">
                 Lenderoo
               </span>
             </div>
@@ -102,13 +102,13 @@ export default function Footer({ onNavigate, onScrollToTop }: FooterProps) {
                 href="https://play.google.com/store/apps/details?id=com.zepira.lenderoo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#0fbca2] hover:bg-[#0da48d] text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md transition-colors w-fit cursor-pointer"
+                className="inline-flex items-center gap-2 bg-[#00BFA6] hover:bg-[#0da48d] text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md transition-colors w-fit cursor-pointer"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download for Android</span>
               </a>
               <span className="text-[10px] text-slate-500">
-                iOS application is currently in development (Apple App Store coming soon)
+                iOS is in closed testing (TestFlight) — public App Store release coming soon
               </span>
             </div>
           </div>

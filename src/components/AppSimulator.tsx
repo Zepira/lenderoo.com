@@ -58,15 +58,15 @@ export default function AppSimulator() {
 
   // Simulated friends state
   const [friends, setFriends] = useState<Friend[]>([
-    { id: "1", name: "Alex Rivers", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&fit=crop&q=80", sharedCount: 12, status: "connected" },
-    { id: "2", name: "Chloe Chen", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&fit=crop&q=80", sharedCount: 8, status: "connected" },
-    { id: "3", name: "Marcus Brody", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&fit=crop&q=80", sharedCount: 3, status: "connected" },
+    { id: "1", name: "Alex Rivers", avatar: "/avatars/kangaroo.png", sharedCount: 12, status: "connected" },
+    { id: "2", name: "Chloe Chen", avatar: "/avatars/cockatoo.png", sharedCount: 8, status: "connected" },
+    { id: "3", name: "Marcus Brody", avatar: "/avatars/koala.png", sharedCount: 3, status: "connected" },
   ]);
 
   // Simulated requests state
   const [requests, setRequests] = useState<Request[]>([
-    { id: "1", friendName: "Chloe Chen", friendAvatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&fit=crop&q=80", itemName: "Catan Board Game", type: "incoming", status: "pending", date: "Just now" },
-    { id: "2", friendName: "Alex Rivers", friendAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&fit=crop&q=80", itemName: "DeWalt Cordless Drill", type: "incoming", status: "approved", date: "2 days ago" }
+    { id: "1", friendName: "Chloe Chen", friendAvatar: "/avatars/cockatoo.png", itemName: "Catan Board Game", type: "incoming", status: "pending", date: "Just now" },
+    { id: "2", friendName: "Alex Rivers", friendAvatar: "/avatars/kangaroo.png", itemName: "DeWalt Cordless Drill", type: "incoming", status: "approved", date: "2 days ago" }
   ]);
 
   // New item modal form state
@@ -155,9 +155,9 @@ export default function AppSimulator() {
   const handleAddFriend = () => {
     const names = ["Sarah Jenkins", "Emily Taylor", "Liam O'Connor"];
     const avatars = [
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&fit=crop&q=80"
+      "/avatars/kookaburra.png",
+      "/avatars/echidna.png",
+      "/avatars/platypus.png"
     ];
     
     // Choose one not added yet
@@ -201,10 +201,10 @@ export default function AppSimulator() {
     <div id="simulator-container" className="relative flex flex-col items-center">
       {/* Glow Effects */}
       <div className="absolute -top-10 -left-10 w-48 h-48 bg-teal-400 rounded-full filter blur-3xl opacity-20 dark:opacity-10 animate-pulse"></div>
-      <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-indigo-500 rounded-full filter blur-3xl opacity-25 dark:opacity-15 animate-pulse delay-1000"></div>
+      <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-blue-500 rounded-full filter blur-3xl opacity-25 dark:opacity-15 animate-pulse delay-1000"></div>
 
       {/* Interactive Floating Hint */}
-      <div className="absolute -top-12 z-20 bg-indigo-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-md flex items-center gap-1.5 border border-indigo-400 animate-bounce">
+      <div className="absolute -top-12 z-20 bg-[#00BFA6] text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-md flex items-center gap-1.5 border border-teal-400 animate-bounce">
         <Sparkles className="w-3.5 h-3.5" />
         <span>Try Interactive Demo Below!</span>
       </div>
@@ -252,7 +252,7 @@ export default function AppSimulator() {
                 : "-translate-y-24 opacity-0 scale-95 pointer-events-none"
             }`}
           >
-            <div className="bg-[#0fbca2] p-1.5 rounded-lg flex-shrink-0">
+            <div className="bg-[#00BFA6] p-1.5 rounded-lg flex-shrink-0">
               <KangarooLogo size={18} variant="icon" />
             </div>
             <div className="flex-1 min-w-0">
@@ -277,7 +277,7 @@ export default function AppSimulator() {
           }`}>
             <div className="flex items-center gap-1.5">
               <KangarooLogo size={24} variant="silhouette" />
-              <span className="font-extrabold text-base tracking-tight text-[#0fbca2]">Lenderoo</span>
+              <span className="font-extrabold text-base tracking-tight text-[#00BFA6]">Lenderoo</span>
             </div>
             
             {/* Inner App Theme Toggle */}
@@ -315,7 +315,7 @@ export default function AppSimulator() {
                   </div>
                   <button
                     onClick={() => setIsAddingItem(true)}
-                    className="flex items-center gap-1 text-[11px] font-bold text-white bg-indigo-600 hover:bg-indigo-700 px-2.5 py-1.5 rounded-full transition-colors shadow-sm"
+                    className="flex items-center gap-1 text-[11px] font-bold text-white bg-[#00BFA6] hover:bg-[#0da48d] px-2.5 py-1.5 rounded-full transition-colors shadow-sm"
                   >
                     <Plus className="w-3 h-3" />
                     <span>Add</span>
@@ -348,7 +348,7 @@ export default function AppSimulator() {
                     >
                       <div className="flex items-center gap-2.5">
                         <div className={`p-2 rounded-lg ${
-                          appDarkMode ? "bg-slate-700 text-indigo-400" : "bg-indigo-50 text-indigo-600"
+                          appDarkMode ? "bg-slate-700 text-teal-400" : "bg-teal-50 text-teal-600"
                         }`}>
                           {getCategoryIcon(item.category)}
                         </div>
@@ -368,7 +368,7 @@ export default function AppSimulator() {
                           </span>
                         )}
                         {item.status === "lent" && (
-                          <span className="text-[9px] font-semibold text-indigo-600 bg-indigo-50 dark:bg-indigo-950/30 dark:text-indigo-400 px-2 py-0.5 rounded-full">
+                          <span className="text-[9px] font-semibold text-sky-600 bg-sky-50 dark:bg-sky-950/30 dark:text-sky-400 px-2 py-0.5 rounded-full">
                             Lent to {item.assignedTo}
                           </span>
                         )}
@@ -391,7 +391,7 @@ export default function AppSimulator() {
                   </div>
                   <button
                     onClick={handleAddFriend}
-                    className="flex items-center gap-1 text-[11px] font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-slate-800 dark:text-indigo-400 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-full transition-colors border border-indigo-200/50"
+                    className="flex items-center gap-1 text-[11px] font-bold text-teal-600 bg-teal-50 hover:bg-teal-100 dark:bg-slate-800 dark:text-teal-400 dark:hover:bg-slate-700 px-2.5 py-1.5 rounded-full transition-colors border border-teal-200/50"
                   >
                     <Plus className="w-3 h-3" />
                     <span>Connect</span>
@@ -483,7 +483,7 @@ export default function AppSimulator() {
                         appDarkMode ? "bg-slate-700/50" : "bg-slate-50"
                       }`}>
                         <span className="text-slate-400 font-normal">Wants to borrow:</span>
-                        <span className="text-indigo-600 dark:text-indigo-400">{req.itemName}</span>
+                        <span className="text-teal-600 dark:text-teal-400">{req.itemName}</span>
                       </div>
 
                       {/* Request actions */}
@@ -498,7 +498,7 @@ export default function AppSimulator() {
                           </button>
                           <button
                             onClick={() => handleApproveRequest(req.id)}
-                            className="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-lg bg-[#0fbca2] hover:bg-[#0da48d] text-white text-[10px] font-bold shadow-sm transition-colors"
+                            className="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-lg bg-[#00BFA6] hover:bg-[#0da48d] text-white text-[10px] font-bold shadow-sm transition-colors"
                           >
                             <Check className="w-3 h-3" />
                             <span>Approve</span>
@@ -561,8 +561,8 @@ export default function AppSimulator() {
                       onChange={(e) => setNewItemName(e.target.value)}
                       className={`w-full px-3 py-2 text-xs rounded-lg border outline-none ${
                         appDarkMode 
-                          ? "bg-slate-700 border-slate-600 text-white focus:border-indigo-500" 
-                          : "bg-slate-50 border-slate-200 text-slate-800 focus:border-indigo-500"
+                          ? "bg-slate-700 border-slate-600 text-white focus:border-teal-500" 
+                          : "bg-slate-50 border-slate-200 text-slate-800 focus:border-teal-500"
                       }`}
                     />
                   </div>
@@ -581,7 +581,7 @@ export default function AppSimulator() {
                           onClick={() => setNewItemCategory(cat)}
                           className={`py-1.5 px-2 rounded-lg border text-[10px] font-bold capitalize flex items-center justify-center gap-1 transition-colors ${
                             newItemCategory === cat
-                              ? "border-indigo-600 bg-indigo-50 text-indigo-600 dark:bg-slate-700 dark:text-indigo-400 dark:border-indigo-500"
+                              ? "border-teal-600 bg-teal-50 text-teal-600 dark:bg-slate-700 dark:text-teal-400 dark:border-teal-500"
                               : "border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700"
                           }`}
                         >
@@ -595,7 +595,7 @@ export default function AppSimulator() {
 
                 <button
                   type="submit"
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-xl text-xs shadow-md transition-colors flex items-center justify-center gap-1.5"
+                  className="w-full bg-[#00BFA6] hover:bg-[#0da48d] text-white font-bold py-2 rounded-xl text-xs shadow-md transition-colors flex items-center justify-center gap-1.5"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Add to Personal Library</span>
@@ -612,7 +612,7 @@ export default function AppSimulator() {
               onClick={() => setActiveTab("library")}
               className={`flex flex-col items-center flex-1 py-1 transition-colors ${
                 activeTab === "library" 
-                  ? "text-[#0fbca2]" 
+                  ? "text-[#00BFA6]" 
                   : "text-slate-400 hover:text-slate-600"
               }`}
             >
@@ -624,7 +624,7 @@ export default function AppSimulator() {
               onClick={() => setActiveTab("friends")}
               className={`flex flex-col items-center flex-1 py-1 transition-colors ${
                 activeTab === "friends" 
-                  ? "text-[#0fbca2]" 
+                  ? "text-[#00BFA6]" 
                   : "text-slate-400 hover:text-slate-600"
               }`}
             >
@@ -636,7 +636,7 @@ export default function AppSimulator() {
               onClick={() => setActiveTab("requests")}
               className={`relative flex flex-col items-center flex-1 py-1 transition-colors ${
                 activeTab === "requests" 
-                  ? "text-[#0fbca2]" 
+                  ? "text-[#00BFA6]" 
                   : "text-slate-400 hover:text-slate-600"
               }`}
             >

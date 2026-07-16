@@ -4,10 +4,10 @@ import { Layers, Users, Bell, Moon, BookOpen, Wrench, Gamepad } from "lucide-rea
 export default function Features() {
   const features = [
     {
-      icon: <Layers className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />,
+      icon: <Layers className="w-6 h-6 text-blue-600 dark:text-blue-400" />,
       title: "Add Items to Your Library",
       description: "Quickly catalog your personal items, from books and cordless drills to board games and camping tents. Categorize them so they are easy for friends to discover.",
-      accent: "from-indigo-500 to-indigo-600"
+      accent: "from-blue-500 to-blue-600"
     },
     {
       icon: <Users className="w-6 h-6 text-teal-600 dark:text-teal-400" />,
@@ -22,10 +22,10 @@ export default function Features() {
       accent: "from-amber-400 to-amber-500"
     },
     {
-      icon: <Moon className="w-6 h-6 text-indigo-500 dark:text-purple-400" />,
+      icon: <Moon className="w-6 h-6 text-violet-500 dark:text-violet-400" />,
       title: "Dark/Light Mode Support",
-      description: "A gorgeous interface that respects your system settings. Toggle dark mode for comfortable late-night library browsing, available on Android.",
-      accent: "from-purple-500 to-indigo-500"
+      description: "A gorgeous interface that respects your system settings. Toggle dark mode for comfortable late-night library browsing.",
+      accent: "from-violet-500 to-violet-600"
     }
   ];
 
@@ -36,13 +36,13 @@ export default function Features() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
       {/* Decorative lines */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-indigo-500/30 to-transparent"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-teal-500/30 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">
+          <h2 className="text-xs font-black text-teal-600 dark:text-teal-400 uppercase tracking-widest">
             Key Features
           </h2>
           <p className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mt-3">
@@ -58,10 +58,10 @@ export default function Features() {
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className="group relative p-6 sm:p-8 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 hover:border-indigo-500/30 dark:hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/2 dark:hover:shadow-indigo-500/1 transition-all duration-300"
+              className="group relative p-6 sm:p-8 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 hover:border-teal-500/30 dark:hover:border-teal-500/30 hover:shadow-xl hover:shadow-teal-500/2 dark:hover:shadow-teal-500/1 transition-all duration-300"
             >
               {/* Feature Icon Background */}
-              <div className="inline-flex p-3.5 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50 mb-6 transition-all group-hover:scale-110 group-hover:shadow-indigo-500/10">
+              <div className="inline-flex p-3.5 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50 mb-6 transition-all group-hover:scale-110 group-hover:shadow-teal-500/10">
                 {feature.icon}
               </div>
 
@@ -80,7 +80,7 @@ export default function Features() {
         </div>
 
         {/* Categories Section - Interactive visualizer */}
-        <div className="mt-16 p-6 sm:p-10 rounded-2xl bg-indigo-50/20 dark:bg-slate-900/40 border border-indigo-100/50 dark:border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="mt-16 p-6 sm:p-10 rounded-2xl bg-teal-50/20 dark:bg-slate-900/40 border border-teal-100/50 dark:border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-xl text-center md:text-left">
             <span className="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase tracking-widest bg-teal-50 dark:bg-teal-950/20 px-2.5 py-1 rounded-full border border-teal-100 dark:border-teal-900/30">
               Versatile Sharing
@@ -97,7 +97,7 @@ export default function Features() {
             {[
               { icon: <BookOpen className="w-4 h-4 text-emerald-500" />, label: "Books & Literature" },
               { icon: <Wrench className="w-4 h-4 text-amber-500" />, label: "Tools & Equipment" },
-              { icon: <Gamepad className="w-4 h-4 text-indigo-500" />, label: "Board Games" },
+              { icon: <Gamepad className="w-4 h-4 text-blue-500" />, label: "Board Games" },
               { icon: <Layers className="w-4 h-4 text-rose-500" />, label: "And so much more!" }
             ].map((cat, idx) => (
               <div 

@@ -156,7 +156,7 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
               key={i}
               className="flex gap-2 items-start text-sm text-slate-600 dark:text-slate-400"
             >
-              <span className="text-indigo-400 mt-1.5 w-1 h-1 rounded-full bg-indigo-400 flex-shrink-0" />
+              <span className="text-teal-400 mt-1.5 w-1 h-1 rounded-full bg-teal-400 flex-shrink-0" />
               {point}
             </li>
           ))}
@@ -173,7 +173,7 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
         <div className="flex items-center justify-between mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
           <button
             onClick={onBackToHome}
-            className="flex items-center gap-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors group cursor-pointer"
+            className="flex items-center gap-2 text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to Home</span>
@@ -183,7 +183,7 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
 
         {/* Title */}
         <div className="text-center mb-10">
-          <div className="inline-flex p-3 bg-indigo-50 dark:bg-indigo-950/30 rounded-full mb-4 text-indigo-500">
+          <div className="inline-flex p-3 bg-teal-50 dark:bg-teal-950/30 rounded-full mb-4 text-teal-500">
             <Sparkles className="w-8 h-8" />
           </div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mb-3">
@@ -206,7 +206,7 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
           {/* ── Roadmap & feature requests ── */}
           <section>
             <div className="flex items-center gap-3 mb-5">
-              <div className="p-2 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-lg">
+              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 rounded-lg">
                 <MessageSquareText className="w-5 h-5" />
               </div>
               <h2 className="text-base font-extrabold text-slate-950 dark:text-white">
@@ -244,7 +244,7 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
                         </span>
                       </div>
                       {entry.response && (
-                        <div className="mt-3 pl-3 border-l-2 border-indigo-200 dark:border-indigo-900/50 text-xs text-slate-500 dark:text-slate-400 italic">
+                        <div className="mt-3 pl-3 border-l-2 border-teal-200 dark:border-teal-900/50 text-xs text-slate-500 dark:text-slate-400 italic">
                           {entry.response}
                         </div>
                       )}

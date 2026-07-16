@@ -18,7 +18,7 @@ export default function KangarooLogo({ className = "", size = 48, variant = "ico
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="100" height="100" rx="22" fill="#0fbca2" />
+        <rect width="100" height="100" rx="22" fill="#00BFA6" />
         {/* Kangaroo silhouette reading book */}
         <path
           d="M32 75 C32 75, 45 80, 58 80 C68 80, 78 72, 74 62 C71 54, 62 48, 62 38 C62 34, 64 28, 68 24 C71 21, 67 12, 60 14 C56 15, 52 20, 50 24 C45 28, 40 33, 35 38 C32 41, 32 45, 34 49 L46 45 C46 45, 44 54, 48 58 C52 62, 58 64, 52 70 C48 74, 40 73, 32 75 Z"
@@ -28,7 +28,7 @@ export default function KangarooLogo({ className = "", size = 48, variant = "ico
         <path
           d="M26 53 L38 48 C38 48, 42 54, 48 52 C48 52, 42 58, 36 57 C30 56, 26 53, 26 53 Z"
           fill="#FFF9E6"
-          stroke="#0fbca2"
+          stroke="#00BFA6"
           strokeWidth="1.5"
           strokeLinejoin="round"
         />
@@ -50,7 +50,7 @@ export default function KangarooLogo({ className = "", size = 48, variant = "ico
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* Background glow */}
-        <circle cx="60" cy="110" r="50" fill="#0fbca2" fillOpacity="0.1" />
+        <circle cx="60" cy="110" r="50" fill="#00BFA6" fillOpacity="0.1" />
         
         {/* Ears */}
         {/* Left Ear */}
@@ -177,7 +177,7 @@ export default function KangarooLogo({ className = "", size = 48, variant = "ico
   // Default App Icon variant (Rounded turquoise rect with clean silhouette inside)
   return (
     <div
-      className={`relative flex items-center justify-center overflow-hidden bg-[#0fbca2] shadow-md transition-shadow hover:shadow-lg ${className}`}
+      className={`relative flex items-center justify-center overflow-hidden bg-[#00BFA6] shadow-md transition-shadow hover:shadow-lg ${className}`}
       style={{ width: size, height: size, borderRadius: size * 0.22 }}
     >
       <svg
@@ -195,7 +195,7 @@ export default function KangarooLogo({ className = "", size = 48, variant = "ico
         <path
           d="M26 53 L38 48 C38 48, 42 54, 48 52 C48 52, 42 58, 36 57 C30 56, 26 53, 26 53 Z"
           fill="#FFF9E6"
-          stroke="#0fbca2"
+          stroke="#00BFA6"
           strokeWidth="1.5"
           strokeLinejoin="round"
         />

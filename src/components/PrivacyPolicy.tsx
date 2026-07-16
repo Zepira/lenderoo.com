@@ -16,7 +16,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
         <div className="flex items-center justify-between mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
           <button
             onClick={onBackToHome}
-            className="flex items-center gap-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors group cursor-pointer"
+            className="flex items-center gap-2 text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to Home</span>
@@ -29,7 +29,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
 
         {/* Title */}
         <div className="text-center mb-12">
-          <div className="inline-flex p-3 bg-indigo-50 dark:bg-indigo-950/40 rounded-full mb-4 text-indigo-600 dark:text-indigo-400">
+          <div className="inline-flex p-3 bg-teal-50 dark:bg-teal-950/40 rounded-full mb-4 text-teal-600 dark:text-teal-400">
             <Shield className="w-8 h-8" />
           </div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mb-3">
@@ -44,8 +44,8 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm leading-relaxed space-y-8">
           
           {/* Quick Summary Box */}
-          <div className="bg-indigo-50/50 dark:bg-indigo-950/10 rounded-xl p-5 border border-indigo-100/50 dark:border-indigo-950/30">
-            <h3 className="font-extrabold text-indigo-950 dark:text-indigo-400 text-sm mb-2 flex items-center gap-2">
+          <div className="bg-teal-50/50 dark:bg-teal-950/10 rounded-xl p-5 border border-teal-100/50 dark:border-teal-950/30">
+            <h3 className="font-extrabold text-teal-950 dark:text-teal-400 text-sm mb-2 flex items-center gap-2">
               <Lock className="w-4 h-4" />
               <span>Lenderoo Privacy Pledge</span>
             </h3>
@@ -57,7 +57,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
           {/* Section 1 */}
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-indigo-600 dark:text-indigo-400">1.</span> Information We Collect
+              <span className="text-teal-600 dark:text-teal-400">1.</span> Information We Collect
             </h2>
             <p className="text-sm text-slate-600 dark:text-slate-400">
               To operate the Lenderoo application and offer its social sharing capabilities, we collect specific information when you register and use the app:
@@ -87,7 +87,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
           {/* Section 2 */}
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-indigo-600 dark:text-indigo-400">2.</span> Technical Infrastructure & Services
+              <span className="text-teal-600 dark:text-teal-400">2.</span> Technical Infrastructure & Services
             </h2>
             <p className="text-sm text-slate-600 dark:text-slate-400">
               Lenderoo relies on secure third-party infrastructure providers to run core app systems. These third parties only process data according to strict privacy guidelines:
@@ -95,7 +95,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
               <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex gap-3 bg-slate-50/50 dark:bg-slate-900/50">
-                <Database className="w-5 h-5 text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
+                <Database className="w-5 h-5 text-teal-600 dark:text-teal-400 flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold mb-1">Backend & Authentication (Supabase)</h4>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-normal">
@@ -105,7 +105,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
               </div>
 
               <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex gap-3 bg-slate-50/50 dark:bg-slate-900/50">
-                <Bell className="w-5 h-5 text-[#0fbca2] flex-shrink-0" />
+                <Bell className="w-5 h-5 text-[#00BFA6] flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold mb-1">Push Notifications (Expo Notifications)</h4>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-normal">
@@ -119,10 +119,10 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
           {/* Section 3 */}
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-indigo-600 dark:text-indigo-400">3.</span> Financial and Payment Data
+              <span className="text-teal-600 dark:text-teal-400">3.</span> Financial and Payment Data
             </h2>
             <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex gap-3 bg-slate-50/50 dark:bg-slate-900/50">
-              <CreditCard className="w-5 h-5 text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
+              <CreditCard className="w-5 h-5 text-teal-600 dark:text-teal-400 flex-shrink-0" />
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                 Lenderoo is currently free to use and does not process payments, subscriptions, or in-app purchases of any kind. We do not collect, process, or store your credit card, bank account, or other financial details. If we introduce a paid feature in the future, it will be handled exclusively through Apple&apos;s or Google&apos;s official in-app purchase systems — which keep your payment details private from us — and this Privacy Policy will be updated before that feature launches.
               </p>
@@ -132,7 +132,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
           {/* Section 4 */}
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-indigo-600 dark:text-indigo-400">4.</span> Data Sharing & Commercialization
+              <span className="text-teal-600 dark:text-teal-400">4.</span> Data Sharing & Commercialization
             </h2>
             <div className="bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 p-4 rounded-xl border border-emerald-500/20 text-sm">
               <strong>Absolutely No Sale of Data:</strong> We do not, have never, and will never sell, lease, exchange, or commercialize your personal information to third-party advertisers, data brokers, or marketing networks.
@@ -145,7 +145,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
           {/* Section 5 */}
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-indigo-600 dark:text-indigo-400">5.</span> Account Deletion & Right to be Forgotten
+              <span className="text-teal-600 dark:text-teal-400">5.</span> Account Deletion & Right to be Forgotten
             </h2>
             <div className="flex gap-4 items-start bg-slate-50/50 dark:bg-slate-900/50 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
               <div className="p-3 bg-red-50 dark:bg-red-950/20 text-red-500 rounded-lg flex-shrink-0 mt-1">
@@ -169,7 +169,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
           {/* Section 6 */}
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-indigo-600 dark:text-indigo-400">6.</span> Children&apos;s Privacy
+              <span className="text-teal-600 dark:text-teal-400">6.</span> Children&apos;s Privacy
             </h2>
             <p className="text-sm text-slate-600 dark:text-slate-400">
               Lenderoo is not directed at or intended for children under the age of 13. We do not knowingly collect personal data from children under 13. If you believe a child has provided us with personal information, please contact us immediately so we can remove it.
@@ -179,14 +179,14 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
           {/* Section 7 */}
           <section className="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
             <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 pb-1">
-              <span className="text-indigo-600 dark:text-indigo-400">7.</span> Contact Us
+              <span className="text-teal-600 dark:text-teal-400">7.</span> Contact Us
             </h2>
             <p className="text-sm text-slate-600 dark:text-slate-400">
               For any questions, data access requests, or issues regarding this Privacy Policy, please reach out directly to:
             </p>
             <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-2">
               <div className="flex items-center gap-2.5">
-                <div className="bg-indigo-100 dark:bg-indigo-950/40 p-2 rounded-lg text-indigo-600 dark:text-indigo-400">
+                <div className="bg-teal-100 dark:bg-teal-950/40 p-2 rounded-lg text-teal-600 dark:text-teal-400">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
@@ -196,7 +196,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
               </div>
               <a
                 href="mailto:support@lenderoo.app"
-                className="inline-flex justify-center items-center bg-[#6366f1] hover:bg-indigo-700 text-white font-bold text-xs px-4 py-2.5 rounded-lg shadow-sm transition-colors cursor-pointer"
+                className="inline-flex justify-center items-center bg-[#00BFA6] hover:bg-[#0da48d] text-white font-bold text-xs px-4 py-2.5 rounded-lg shadow-sm transition-colors cursor-pointer"
               >
                 Send Email
               </a>
@@ -215,4 +215,3 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
     </div>
   );
 }
-

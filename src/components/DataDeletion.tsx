@@ -16,7 +16,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
         <div className="flex items-center justify-between mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
           <button
             onClick={onBackToHome}
-            className="flex items-center gap-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors group cursor-pointer"
+            className="flex items-center gap-2 text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to Home</span>
@@ -43,7 +43,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
           {/* Method 1 — In-app */}
           <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
             <div className="flex items-center gap-3 mb-5">
-              <div className="p-2 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-lg">
+              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 rounded-lg">
                 <Smartphone className="w-5 h-5" />
               </div>
               <div>
@@ -59,7 +59,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
                 "Confirm the deletion when prompted. This action is immediate and cannot be undone.",
               ].map((step, i) => (
                 <li key={i} className="flex gap-3 items-start">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-xs font-black flex items-center justify-center mt-0.5">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 text-xs font-black flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
                   <span className="text-sm text-slate-600 dark:text-slate-400">{step}</span>
@@ -71,7 +71,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
           {/* Method 2 — Email */}
           <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
             <div className="flex items-center gap-3 mb-5">
-              <div className="p-2 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-lg">
+              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 rounded-lg">
                 <Mail className="w-5 h-5" />
               </div>
               <div>
@@ -81,13 +81,13 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
             </div>
             <ol className="space-y-3 mb-6">
               {[
-                <>Send an email to <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">support@lenderoo.app</span> from the email address associated with your Lenderoo account.</>,
+                <>Send an email to <span className="font-mono font-bold text-teal-600 dark:text-teal-400">support@lenderoo.app</span> from the email address associated with your Lenderoo account.</>,
                 <>Use the subject line: <span className="font-mono font-bold text-slate-950 dark:text-white">Account Deletion Request — Lenderoo</span></>,
                 "Include your Lenderoo username or registered email address so we can locate your account.",
                 "We will process your request and send a confirmation within 7 business days.",
               ].map((step, i) => (
                 <li key={i} className="flex gap-3 items-start">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-xs font-black flex items-center justify-center mt-0.5">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 text-xs font-black flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
                   <span className="text-sm text-slate-600 dark:text-slate-400">{step}</span>
@@ -96,7 +96,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
             </ol>
             <a
               href="mailto:support@lenderoo.app?subject=Account%20Deletion%20Request%20%E2%80%94%20Lenderoo"
-              className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-colors"
+              className="inline-flex items-center gap-2 bg-[#00BFA6] hover:bg-[#0da48d] text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-colors"
             >
               <Mail className="w-4 h-4" />
               Send deletion request
