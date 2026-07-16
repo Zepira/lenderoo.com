@@ -16,12 +16,15 @@ interface RoadmapProps {
   onBackToHome: () => void;
 }
 
+type ReleaseNoteStatus = "planned" | "released";
+
 interface ReleaseNote {
   id: string;
   version: string;
   platform: "all" | "ios" | "android";
-  release_date: string;
+  release_date: string | null;
   highlights: string[];
+  status: ReleaseNoteStatus;
 }
 
 type FeedbackStatus = "new" | "in_review" | "resolved" | "wont_fix";
@@ -85,8 +88,8 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
       const [notesRes, feedbackRes] = await Promise.all([
         supabase!
           .from("release_notes")
-          .select("id, version, platform, release_date, highlights")
-          .order("release_date", { ascending: false }),
+          .select("id, version, platform, release_date, highlights, status")
+          .order("release_date", { ascending: false, nullsFirst: false }),
         supabase!
           .from("feedback")
           .select("id, comment, status, response, created_at")
@@ -109,6 +112,58 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
       cancelled = true;
     };
   }, []);
+
+  // Upcoming: planned entries, soonest target date first (undated ones last).
+  // Past: released entries, most recent first — already the fetch order.
+  const upcomingNotes = releaseNotes
+    .filter((n) => n.status === "planned")
+    .sort((a, b) => {
+      if (!a.release_date) return 1;
+      if (!b.release_date) return -1;
+      return a.release_date.localeCompare(b.release_date);
+    });
+  const pastNotes = releaseNotes.filter((n) => n.status === "released");
+
+  function renderReleaseCard(note: ReleaseNote) {
+    const PlatformIcon = PLATFORM_ICON[note.platform];
+    return (
+      <div
+        key={note.id}
+        className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm"
+      >
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <span className="font-mono font-extrabold text-sm text-slate-950 dark:text-white">
+              v{note.version}
+            </span>
+            {PlatformIcon && (
+              <PlatformIcon className="w-3.5 h-3.5 text-slate-400" />
+            )}
+          </div>
+          <span className="text-xs text-slate-400">
+            {note.release_date
+              ? new Date(note.release_date).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })
+              : "Date TBA"}
+          </span>
+        </div>
+        <ul className="space-y-1.5">
+          {note.highlights.map((point, i) => (
+            <li
+              key={i}
+              className="flex gap-2 items-start text-sm text-slate-600 dark:text-slate-400"
+            >
+              <span className="text-indigo-400 mt-1.5 w-1 h-1 rounded-full bg-indigo-400 flex-shrink-0" />
+              {point}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300 py-12 px-4 sm:px-6 lg:px-8">
@@ -200,14 +255,14 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
             )}
           </section>
 
-          {/* ── Release notes ── */}
+          {/* ── Upcoming releases ── */}
           <section>
             <div className="flex items-center gap-3 mb-5">
-              <div className="p-2 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 rounded-lg">
+              <div className="p-2 bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 rounded-lg">
                 <Rocket className="w-5 h-5" />
               </div>
               <h2 className="text-base font-extrabold text-slate-950 dark:text-white">
-                Release notes
+                Upcoming releases
               </h2>
             </div>
 
@@ -215,51 +270,36 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
               <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-400">
                 Loading…
               </div>
-            ) : releaseNotes.length === 0 ? (
+            ) : upcomingNotes.length === 0 ? (
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-400">
+                Nothing planned publicly yet.
+              </div>
+            ) : (
+              <div className="space-y-4">{upcomingNotes.map(renderReleaseCard)}</div>
+            )}
+          </section>
+
+          {/* ── Past releases ── */}
+          <section>
+            <div className="flex items-center gap-3 mb-5">
+              <div className="p-2 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 rounded-lg">
+                <CheckCircle2 className="w-5 h-5" />
+              </div>
+              <h2 className="text-base font-extrabold text-slate-950 dark:text-white">
+                Past releases
+              </h2>
+            </div>
+
+            {loading ? (
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-400">
+                Loading…
+              </div>
+            ) : pastNotes.length === 0 ? (
               <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-400">
                 No release notes published yet.
               </div>
             ) : (
-              <div className="space-y-4">
-                {releaseNotes.map((note) => {
-                  const PlatformIcon = PLATFORM_ICON[note.platform];
-                  return (
-                    <div
-                      key={note.id}
-                      className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm"
-                    >
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                          <span className="font-mono font-extrabold text-sm text-slate-950 dark:text-white">
-                            v{note.version}
-                          </span>
-                          {PlatformIcon && (
-                            <PlatformIcon className="w-3.5 h-3.5 text-slate-400" />
-                          )}
-                        </div>
-                        <span className="text-xs text-slate-400">
-                          {new Date(note.release_date).toLocaleDateString("en-US", {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          })}
-                        </span>
-                      </div>
-                      <ul className="space-y-1.5">
-                        {note.highlights.map((point, i) => (
-                          <li
-                            key={i}
-                            className="flex gap-2 items-start text-sm text-slate-600 dark:text-slate-400"
-                          >
-                            <span className="text-indigo-400 mt-1.5 w-1 h-1 rounded-full bg-indigo-400 flex-shrink-0" />
-                            {point}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  );
-                })}
-              </div>
+              <div className="space-y-4">{pastNotes.map(renderReleaseCard)}</div>
             )}
           </section>
 
