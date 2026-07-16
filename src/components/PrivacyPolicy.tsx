@@ -6,7 +6,7 @@ interface PrivacyPolicyProps {
 }
 
 export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
-  const lastUpdated = "June 26, 2026";
+  const lastUpdated = "July 16, 2026";
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300 py-12 px-4 sm:px-6 lg:px-8">
@@ -157,7 +157,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
                   <li>Tap the <span className="font-bold text-slate-950 dark:text-white">Delete Account</span> option and confirm.</li>
                 </ol>
                 <p className="text-xs text-slate-500 dark:text-slate-450 italic mt-3">
-                  Upon confirmation, your user credentials, personal library items, friendships, profile pictures, and active request logs will be permanently deleted from our active database servers and cannot be recovered.
+                  Upon confirmation, your login access is immediately and permanently disabled, and your email address, password, username, display name, profile photo, and phone number are permanently erased and cannot be recovered. Library items and friend connections with no one else involved are deleted outright; anything currently on loan (to you or from you) is automatically marked returned. If you share a borrowing history with a friend, that shared record is kept so their history isn&apos;t broken — it will show your entry as &quot;Deleted User&quot; and contains nothing that identifies or could be used to contact you.
                 </p>
               </div>
             </div>
@@ -188,11 +188,11 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold">Zepira Labs</h4>
-                  <p className="text-[11px] font-mono text-slate-500 dark:text-slate-400">dev@zepiralabs.com</p>
+                  <p className="text-[11px] font-mono text-slate-500 dark:text-slate-400">support@lenderoo.app</p>
                 </div>
               </div>
               <a
-                href="mailto:dev@zepiralabs.com"
+                href="mailto:support@lenderoo.app"
                 className="inline-flex justify-center items-center bg-[#6366f1] hover:bg-indigo-700 text-white font-bold text-xs px-4 py-2.5 rounded-lg shadow-sm transition-colors cursor-pointer"
               >
                 Send Email

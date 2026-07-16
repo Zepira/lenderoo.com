@@ -6,7 +6,7 @@ interface DataDeletionProps {
 }
 
 export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
-  const lastUpdated = "June 26, 2026";
+  const lastUpdated = "July 16, 2026";
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300 py-12 px-4 sm:px-6 lg:px-8">
@@ -81,7 +81,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
             </div>
             <ol className="space-y-3 mb-6">
               {[
-                <>Send an email to <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">dev@zepiralabs.com</span> from the email address associated with your Lenderoo account.</>,
+                <>Send an email to <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">support@lenderoo.app</span> from the email address associated with your Lenderoo account.</>,
                 <>Use the subject line: <span className="font-mono font-bold text-slate-950 dark:text-white">Account Deletion Request — Lenderoo</span></>,
                 "Include your Lenderoo username or registered email address so we can locate your account.",
                 "We will process your request and send a confirmation within 7 business days.",
@@ -95,7 +95,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
               ))}
             </ol>
             <a
-              href="mailto:dev@zepiralabs.com?subject=Account%20Deletion%20Request%20%E2%80%94%20Lenderoo"
+              href="mailto:support@lenderoo.app?subject=Account%20Deletion%20Request%20%E2%80%94%20Lenderoo"
               className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-colors"
             >
               <Mail className="w-4 h-4" />
@@ -120,13 +120,13 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
                 </h3>
                 <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                   {[
-                    "Email address and password",
-                    "Username and display name",
+                    "Email address and password (login access is disabled immediately)",
+                    "Username, display name, and phone number",
                     "Profile photo",
-                    "All library items you added",
-                    "All friend connections",
-                    "All borrow and lend request records",
+                    "Friend connections and pending friend/borrow requests",
+                    "Favourites and \"notify me\" subscriptions",
                     "Push notification device tokens",
+                    "Library items no one else is currently borrowing",
                   ].map((item) => (
                     <li key={item} className="flex gap-2 items-start">
                       <span className="text-red-400 mt-0.5 flex-shrink-0">✕</span>
@@ -135,19 +135,21 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
                   ))}
                 </ul>
                 <p className="text-xs text-slate-400 dark:text-slate-500 mt-3 italic">
-                  Deletion from active databases is immediate upon confirmation.
+                  Deletion from active databases is immediate upon confirmation. Anything
+                  you're actively lending or borrowing at that moment is automatically
+                  marked returned first, so the other person isn't left with a stuck loan.
                 </p>
               </div>
 
               {/* Retained */}
               <div className="rounded-xl border border-emerald-100 dark:border-emerald-900/30 bg-emerald-50/40 dark:bg-emerald-950/10 p-4">
                 <h3 className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-3 flex items-center gap-1.5">
-                  <CheckCircle className="w-3.5 h-3.5" /> Temporarily retained
+                  <CheckCircle className="w-3.5 h-3.5" /> Retained
                 </h3>
                 <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                   {[
                     { item: "Automated database backups", note: "Purged within 30 days per Supabase backup rotation policy." },
-                    { item: "Aggregated, anonymised analytics", note: "No personal identifiers. Retained indefinitely for product improvement." },
+                    { item: "Shared borrowing history", note: "If you've borrowed from or lent to a friend, that record is kept so their history isn't broken — shown to them as \"Deleted User.\"" },
                   ].map(({ item, note }) => (
                     <li key={item} className="flex gap-2 items-start">
                       <span className="text-emerald-500 mt-0.5 flex-shrink-0">↻</span>
@@ -159,7 +161,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
                   ))}
                 </ul>
                 <p className="text-xs text-slate-400 dark:text-slate-500 mt-3 italic">
-                  No retained data can be used to identify or contact you after deletion.
+                  Nothing retained can be used to identify or contact you after deletion.
                 </p>
               </div>
             </div>
@@ -169,7 +171,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
 
         {/* Footer */}
         <div className="text-center mt-10 text-xs text-slate-400 space-y-1">
-          <p>Questions? Email <a href="mailto:dev@zepiralabs.com" className="underline hover:text-slate-600 dark:hover:text-slate-300">dev@zepiralabs.com</a></p>
+          <p>Questions? Email <a href="mailto:support@lenderoo.app" className="underline hover:text-slate-600 dark:hover:text-slate-300">support@lenderoo.app</a></p>
           <p>© 2026 Zepira Labs. Lenderoo — com.zepira.lenderoo</p>
         </div>
 
