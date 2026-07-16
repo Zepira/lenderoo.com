@@ -76,6 +76,9 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
                 <strong className="text-slate-850 dark:text-slate-300">Friend Connections:</strong> We store the user IDs of friends you choose to connect with so you can view each other&apos;s libraries.
               </li>
               <li>
+                <strong className="text-slate-850 dark:text-slate-300">Device Contacts (optional):</strong> If you choose to find friends using your phone&apos;s contact list, Lenderoo reads your device contacts and creates a one-way cryptographic hash of each phone number and email address directly on your device. Only these anonymized hashes — never your contacts&apos; actual names, phone numbers, or email addresses — are sent to our servers to check for matching Lenderoo accounts. Your raw contact data never leaves your device and is never stored by us.
+              </li>
+              <li>
                 <strong className="text-slate-850 dark:text-slate-300">Borrow & Lend History:</strong> We store records of borrow requests, including the item, the requester, dates, approvals, and return states to track item locations.
               </li>
             </ul>
@@ -106,7 +109,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
                 <div>
                   <h4 className="text-xs font-bold mb-1">Push Notifications (Expo Notifications)</h4>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-normal">
-                    To keep you updated when a friend requests an item or sends a reminder, we use Expo Notifications. This involves sending anonymous notification tokens to route messages safely to your specific Android device.
+                    To keep you updated when a friend requests an item or sends a reminder, we use Expo Notifications. This involves sending anonymous notification tokens to route messages safely to your specific device, on both iOS and Android.
                   </p>
                 </div>
               </div>
@@ -121,7 +124,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
             <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex gap-3 bg-slate-50/50 dark:bg-slate-900/50">
               <CreditCard className="w-5 h-5 text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                All financial transactions, subscriptions, or in-app purchases are handled exclusively through the Google Play Billing Service. We do not collect, process, or store your credit card, bank account, or other financial details.
+                Lenderoo is currently free to use and does not process payments, subscriptions, or in-app purchases of any kind. We do not collect, process, or store your credit card, bank account, or other financial details. If we introduce a paid feature in the future, it will be handled exclusively through Apple&apos;s or Google&apos;s official in-app purchase systems — which keep your payment details private from us — and this Privacy Policy will be updated before that feature launches.
               </p>
             </div>
           </section>

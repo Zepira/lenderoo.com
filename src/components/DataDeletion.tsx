@@ -53,7 +53,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
             </div>
             <ol className="space-y-3">
               {[
-                "Open the Lenderoo app on your Android device.",
+                "Open the Lenderoo app on your device (iOS or Android).",
                 <>Tap the <span className="font-bold text-slate-950 dark:text-white">Profile</span> tab or open the <span className="font-bold text-slate-950 dark:text-white">Settings</span> menu.</>,
                 <>Scroll to the bottom and tap <span className="font-bold text-red-600 dark:text-red-400">Delete Account</span>.</>,
                 "Confirm the deletion when prompted. This action is immediate and cannot be undone.",
