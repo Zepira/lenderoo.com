@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { SUPPORT_EMAIL } from "../lib/site";
 import {
   ArrowLeft,
   Sparkles,
@@ -137,10 +138,10 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
               v{note.version}
             </span>
             {PlatformIcon && (
-              <PlatformIcon className="w-3.5 h-3.5 text-slate-400" />
+              <PlatformIcon className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
             )}
           </div>
-          <span className="text-xs text-slate-400">
+          <span className="text-xs text-slate-600 dark:text-slate-400">
             {note.release_date
               ? new Date(note.release_date).toLocaleDateString("en-US", {
                   month: "short",
@@ -173,12 +174,11 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
         <div className="flex items-center justify-between mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
           <button
             onClick={onBackToHome}
-            className="flex items-center gap-2 text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors group cursor-pointer"
+            className="flex items-center gap-2 text-sm font-semibold text-teal-700 dark:text-teal-300 hover:text-teal-900 dark:hover:text-teal-200 transition-colors group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to Home</span>
           </button>
-          <span className="text-xs font-mono text-slate-400">com.zepira.lenderoo</span>
         </div>
 
         {/* Title */}
@@ -189,7 +189,7 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mb-3">
             Roadmap & Release Notes
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm max-w-xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-400 text-sm max-w-xl mx-auto">
             What's shipped, what's being worked on, and what the community has
             asked for. Feature requests come straight from in-app feedback.
           </p>
@@ -206,7 +206,7 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
           {/* ── Roadmap & feature requests ── */}
           <section>
             <div className="flex items-center gap-3 mb-5">
-              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 rounded-lg">
+              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300 rounded-lg">
                 <MessageSquareText className="w-5 h-5" />
               </div>
               <h2 className="text-base font-extrabold text-slate-950 dark:text-white">
@@ -215,11 +215,11 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
             </div>
 
             {loading ? (
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-400">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-600 dark:text-slate-400">
                 Loading…
               </div>
             ) : feedback.length === 0 ? (
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-400">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-600 dark:text-slate-400">
                 Nothing public yet — check back soon.
               </div>
             ) : (
@@ -237,14 +237,14 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
                           {entry.comment}
                         </p>
                         <span
-                          className={`flex-shrink-0 inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full whitespace-nowrap ${status.classes}`}
+                          className={`flex-shrink-0 inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap ${status.classes}`}
                         >
                           <StatusIcon className="w-3 h-3" />
                           {status.label}
                         </span>
                       </div>
                       {entry.response && (
-                        <div className="mt-3 pl-3 border-l-2 border-teal-200 dark:border-teal-900/50 text-xs text-slate-500 dark:text-slate-400 italic">
+                        <div className="mt-3 pl-3 border-l-2 border-teal-200 dark:border-teal-900/50 text-xs text-slate-600 dark:text-slate-400 italic">
                           {entry.response}
                         </div>
                       )}
@@ -267,11 +267,11 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
             </div>
 
             {loading ? (
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-400">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-600 dark:text-slate-400">
                 Loading…
               </div>
             ) : upcomingNotes.length === 0 ? (
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-400">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-600 dark:text-slate-400">
                 Nothing planned publicly yet.
               </div>
             ) : (
@@ -291,11 +291,11 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
             </div>
 
             {loading ? (
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-400">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-600 dark:text-slate-400">
                 Loading…
               </div>
             ) : pastNotes.length === 0 ? (
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-400">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-sm text-slate-600 dark:text-slate-400">
                 No release notes published yet.
               </div>
             ) : (
@@ -306,18 +306,18 @@ export default function Roadmap({ onBackToHome }: RoadmapProps) {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-10 text-xs text-slate-400 space-y-1">
+        <div className="text-center mt-10 text-xs text-slate-600 dark:text-slate-400 space-y-1">
           <p>
             Got a suggestion? Send it through the Feedback option in the app,
             or email{" "}
             <a
-              href="mailto:support@lenderoo.app"
+              href={`mailto:${SUPPORT_EMAIL}`}
               className="underline hover:text-slate-600 dark:hover:text-slate-300"
             >
-              support@lenderoo.app
+              {SUPPORT_EMAIL}
             </a>
           </p>
-          <p>© 2026 Zepira Labs. Lenderoo — com.zepira.lenderoo</p>
+          <p>© 2026 Zepira Labs</p>
         </div>
 
       </div>

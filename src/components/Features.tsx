@@ -6,7 +6,7 @@ export default function Features() {
     {
       icon: <Layers className="w-6 h-6 text-blue-600 dark:text-blue-400" />,
       title: "Add Items to Your Library",
-      description: "Quickly catalog your personal items, from books and cordless drills to board games and camping tents. Categorize them so they are easy for friends to discover.",
+      description: "Quickly catalogue your personal items, from books and cordless drills to board games and camping tents. Sort them into categories so they are easy for friends to discover.",
       accent: "from-blue-500 to-blue-600"
     },
     {
@@ -30,24 +30,24 @@ export default function Features() {
   ];
 
   return (
-    <section id="features-section" className="py-20 bg-white dark:bg-slate-950 transition-colors duration-300 relative border-t border-slate-200/40 dark:border-slate-900/60">
+    <section id="features-section" className="scroll-mt-16 py-20 bg-white dark:bg-slate-950 transition-colors duration-300 relative border-t border-slate-200/40 dark:border-slate-900/60">
       
       {/* Geometric Balance blueprint grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+      <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
       {/* Decorative lines */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-teal-500/30 to-transparent"></div>
+      <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-teal-500/30 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-black text-teal-600 dark:text-teal-400 uppercase tracking-widest">
+          <p className="text-xs font-black text-teal-700 dark:text-teal-300 uppercase tracking-widest">
             Key Features
-          </h2>
-          <p className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mt-3">
-            Designed for seamless, friendly sharing
           </p>
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mt-3">
+            Designed for seamless, friendly sharing
+          </h2>
           <p className="text-base text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
             Lenderoo removes the awkwardness of lending. Keep track of what you own, who has it, and when it's coming back, all inside a beautiful social layout.
           </p>
@@ -82,14 +82,14 @@ export default function Features() {
         {/* Categories Section - Interactive visualizer */}
         <div className="mt-16 p-6 sm:p-10 rounded-2xl bg-teal-50/20 dark:bg-slate-900/40 border border-teal-100/50 dark:border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-xl text-center md:text-left">
-            <span className="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase tracking-widest bg-teal-50 dark:bg-teal-950/20 px-2.5 py-1 rounded-full border border-teal-100 dark:border-teal-900/30">
+            <span className="text-xs font-black text-teal-800 dark:text-teal-300 uppercase tracking-widest bg-teal-50 dark:bg-teal-950/20 px-2.5 py-1 rounded-full border border-teal-100 dark:border-teal-900/30">
               Versatile Sharing
             </span>
             <h3 className="text-xl font-extrabold text-slate-950 dark:text-white mt-3">
               Share anything in your household
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2">
-              Lenderoo supports custom tags so you are never limited. Categorize your items so friends can find exactly what they need in seconds.
+            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
+              Lenderoo supports custom tags so you are never limited. Sort your items into categories so friends can find exactly what they need in seconds.
             </p>
           </div>
 

@@ -16,7 +16,6 @@ import {
   MessageSquare,
   Sparkles
 } from "lucide-react";
-import KangarooLogo from "./KangarooLogo";
 
 interface Item {
   id: string;
@@ -204,7 +203,7 @@ export default function AppSimulator() {
       <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-blue-500 rounded-full filter blur-3xl opacity-25 dark:opacity-15 animate-pulse delay-1000"></div>
 
       {/* Interactive Floating Hint */}
-      <div className="absolute -top-12 z-20 bg-[#00BFA6] text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-md flex items-center gap-1.5 border border-teal-400 animate-bounce">
+      <div className="absolute -top-12 z-20 bg-teal-700 text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-md flex items-center gap-1.5 border border-teal-400 animate-bounce">
         <Sparkles className="w-3.5 h-3.5" />
         <span>Try Interactive Demo Below!</span>
       </div>
@@ -253,18 +252,19 @@ export default function AppSimulator() {
             }`}
           >
             <div className="bg-[#00BFA6] p-1.5 rounded-lg flex-shrink-0">
-              <KangarooLogo size={18} variant="icon" />
+              <img src="/brand/lenderoo-mark.webp" alt="" width={18} height={18} className="rounded" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex justify-between items-center mb-0.5">
                 <span className="text-[10px] font-bold text-teal-400 uppercase tracking-wider">Lenderoo Notification</span>
                 <span className="text-[9px] text-slate-400">now</span>
               </div>
-              <h5 className="text-xs font-bold truncate text-white">{notification?.title}</h5>
+              <p className="text-xs font-bold truncate text-white">{notification?.title}</p>
               <p className="text-[10px] text-slate-300 leading-tight mt-0.5">{notification?.body}</p>
             </div>
             <button 
               onClick={() => setShowNotification(false)}
+              aria-label="Dismiss notification"
               className="text-slate-400 hover:text-white p-0.5"
             >
               <X className="w-3.5 h-3.5" />
@@ -276,7 +276,7 @@ export default function AppSimulator() {
             appDarkMode ? "border-slate-800 bg-slate-900/50" : "border-slate-200 bg-white"
           }`}>
             <div className="flex items-center gap-1.5">
-              <KangarooLogo size={24} variant="silhouette" />
+              <img src="/brand/lenderoo-mark.webp" alt="" width={24} height={24} className="rounded-md" />
               <span className="font-extrabold text-base tracking-tight text-[#00BFA6]">Lenderoo</span>
             </div>
             
@@ -294,7 +294,8 @@ export default function AppSimulator() {
                   ? "border-slate-700 hover:bg-slate-800 text-yellow-400" 
                   : "border-slate-200 hover:bg-slate-100 text-slate-500"
               }`}
-              title="Toggle App Theme"
+              title="Toggle app theme"
+              aria-label="Toggle app theme"
             >
               {appDarkMode ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
             </button>
@@ -308,14 +309,14 @@ export default function AppSimulator() {
               <div className="flex-1 flex flex-col">
                 <div className="flex justify-between items-center mb-3">
                   <div>
-                    <h3 className="text-sm font-extrabold">My Library</h3>
+                    <p className="text-sm font-extrabold">My Library</p>
                     <p className={`text-[10px] ${appDarkMode ? "text-slate-400" : "text-slate-500"}`}>
                       {items.length} items to share with friends
                     </p>
                   </div>
                   <button
                     onClick={() => setIsAddingItem(true)}
-                    className="flex items-center gap-1 text-[11px] font-bold text-white bg-[#00BFA6] hover:bg-[#0da48d] px-2.5 py-1.5 rounded-full transition-colors shadow-sm"
+                    className="flex items-center gap-1 text-[11px] font-bold text-white bg-teal-700 hover:bg-teal-800 px-2.5 py-1.5 rounded-full transition-colors shadow-sm"
                   >
                     <Plus className="w-3 h-3" />
                     <span>Add</span>
@@ -353,7 +354,7 @@ export default function AppSimulator() {
                           {getCategoryIcon(item.category)}
                         </div>
                         <div>
-                          <h4 className="text-xs font-bold leading-tight">{item.name}</h4>
+                          <p className="text-xs font-bold leading-tight">{item.name}</p>
                           <span className="text-[9px] capitalize text-slate-400 font-medium">
                             {item.category}
                           </span>
@@ -384,7 +385,7 @@ export default function AppSimulator() {
               <div className="flex-1 flex flex-col">
                 <div className="flex justify-between items-center mb-3">
                   <div>
-                    <h3 className="text-sm font-extrabold">Friend Connections</h3>
+                    <p className="text-sm font-extrabold">Friend Connections</p>
                     <p className={`text-[10px] ${appDarkMode ? "text-slate-400" : "text-slate-500"}`}>
                       {friends.length} friends sharing with you
                     </p>
@@ -416,14 +417,14 @@ export default function AppSimulator() {
                           className="w-8 h-8 rounded-full object-cover border border-slate-200"
                         />
                         <div>
-                          <h4 className="text-xs font-bold leading-tight">{friend.name}</h4>
+                          <p className="text-xs font-bold leading-tight">{friend.name}</p>
                           <span className="text-[9px] text-slate-400 font-medium">
                             {friend.sharedCount > 0 ? `${friend.sharedCount} shared items` : "No items shared yet"}
                           </span>
                         </div>
                       </div>
 
-                      <button className={`p-1.5 rounded-full ${
+                      <button aria-label="Message friend" className={`p-1.5 rounded-full ${
                         appDarkMode ? "bg-slate-700 hover:bg-slate-600 text-teal-400" : "bg-teal-50 hover:bg-teal-100 text-teal-600"
                       }`}>
                         <MessageSquare className="w-3 h-3" />
@@ -438,7 +439,7 @@ export default function AppSimulator() {
             {activeTab === "requests" && (
               <div className="flex-1 flex flex-col">
                 <div className="mb-3">
-                  <h3 className="text-sm font-extrabold">Active Requests</h3>
+                  <p className="text-sm font-extrabold">Active Requests</p>
                   <p className={`text-[10px] ${appDarkMode ? "text-slate-400" : "text-slate-500"}`}>
                     Manage your borrowing and lending
                   </p>
@@ -498,7 +499,7 @@ export default function AppSimulator() {
                           </button>
                           <button
                             onClick={() => handleApproveRequest(req.id)}
-                            className="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-lg bg-[#00BFA6] hover:bg-[#0da48d] text-white text-[10px] font-bold shadow-sm transition-colors"
+                            className="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-lg bg-teal-700 hover:bg-teal-800 text-white text-[10px] font-bold shadow-sm transition-colors"
                           >
                             <Check className="w-3 h-3" />
                             <span>Approve</span>
@@ -536,10 +537,11 @@ export default function AppSimulator() {
                 }`}
               >
                 <div className="flex justify-between items-center mb-4">
-                  <h4 className="text-sm font-extrabold">Add New Item</h4>
+                  <p className="text-sm font-extrabold">Add New Item</p>
                   <button 
                     type="button"
                     onClick={() => setIsAddingItem(false)}
+                    aria-label="Close"
                     className="p-1 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700"
                   >
                     <X className="w-4 h-4" />
@@ -595,7 +597,7 @@ export default function AppSimulator() {
 
                 <button
                   type="submit"
-                  className="w-full bg-[#00BFA6] hover:bg-[#0da48d] text-white font-bold py-2 rounded-xl text-xs shadow-md transition-colors flex items-center justify-center gap-1.5"
+                  className="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold py-2 rounded-xl text-xs shadow-md transition-colors flex items-center justify-center gap-1.5"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Add to Personal Library</span>

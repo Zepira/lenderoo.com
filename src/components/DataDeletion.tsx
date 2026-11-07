@@ -1,4 +1,5 @@
 import React from "react";
+import { SUPPORT_EMAIL } from "../lib/site";
 import { Trash2, ArrowLeft, CheckCircle, XCircle, Mail, AlertTriangle, Smartphone } from "lucide-react";
 
 interface DataDeletionProps {
@@ -16,12 +17,11 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
         <div className="flex items-center justify-between mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
           <button
             onClick={onBackToHome}
-            className="flex items-center gap-2 text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors group cursor-pointer"
+            className="flex items-center gap-2 text-sm font-semibold text-teal-700 dark:text-teal-300 hover:text-teal-900 dark:hover:text-teal-200 transition-colors group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to Home</span>
           </button>
-          <span className="text-xs font-mono text-slate-400">com.zepira.lenderoo</span>
         </div>
 
         {/* Title */}
@@ -32,10 +32,10 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mb-3">
             Account & Data Deletion
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm max-w-xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-400 text-sm max-w-xl mx-auto">
             This page describes how <strong className="text-slate-700 dark:text-slate-300">Lenderoo</strong> users can request permanent deletion of their account and associated data, as operated by <strong className="text-slate-700 dark:text-slate-300">Zepira Labs</strong>.
           </p>
-          <p className="text-xs text-slate-400 mt-2">Last updated: {lastUpdated}</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-2">Last updated: {lastUpdated}</p>
         </div>
 
         <div className="space-y-6">
@@ -43,12 +43,12 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
           {/* Method 1 — In-app */}
           <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
             <div className="flex items-center gap-3 mb-5">
-              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 rounded-lg">
+              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300 rounded-lg">
                 <Smartphone className="w-5 h-5" />
               </div>
               <div>
                 <h2 className="text-base font-extrabold text-slate-950 dark:text-white">Option 1 — Delete directly in the app</h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Fastest method. Instant and does not require contacting us.</p>
+                <p className="text-xs text-slate-600 dark:text-slate-400">Fastest method. Instant and does not require contacting us.</p>
               </div>
             </div>
             <ol className="space-y-3">
@@ -59,7 +59,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
                 "Confirm the deletion when prompted. This action is immediate and cannot be undone.",
               ].map((step, i) => (
                 <li key={i} className="flex gap-3 items-start">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 text-xs font-black flex items-center justify-center mt-0.5">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300 text-xs font-black flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
                   <span className="text-sm text-slate-600 dark:text-slate-400">{step}</span>
@@ -71,23 +71,23 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
           {/* Method 2 — Email */}
           <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
             <div className="flex items-center gap-3 mb-5">
-              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 rounded-lg">
+              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300 rounded-lg">
                 <Mail className="w-5 h-5" />
               </div>
               <div>
                 <h2 className="text-base font-extrabold text-slate-950 dark:text-white">Option 2 — Request deletion by email</h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Use this if you no longer have access to the app.</p>
+                <p className="text-xs text-slate-600 dark:text-slate-400">Use this if you no longer have access to the app.</p>
               </div>
             </div>
             <ol className="space-y-3 mb-6">
               {[
-                <>Send an email to <span className="font-mono font-bold text-teal-600 dark:text-teal-400">support@lenderoo.app</span> from the email address associated with your Lenderoo account.</>,
+                <>Send an email to <span className="font-mono font-bold text-teal-700 dark:text-teal-300">{SUPPORT_EMAIL}</span> from the email address associated with your Lenderoo account.</>,
                 <>Use the subject line: <span className="font-mono font-bold text-slate-950 dark:text-white">Account Deletion Request — Lenderoo</span></>,
                 "Include your Lenderoo username or registered email address so we can locate your account.",
                 "We will process your request and send a confirmation within 7 business days.",
               ].map((step, i) => (
                 <li key={i} className="flex gap-3 items-start">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 text-xs font-black flex items-center justify-center mt-0.5">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300 text-xs font-black flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
                   <span className="text-sm text-slate-600 dark:text-slate-400">{step}</span>
@@ -95,8 +95,8 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
               ))}
             </ol>
             <a
-              href="mailto:support@lenderoo.app?subject=Account%20Deletion%20Request%20%E2%80%94%20Lenderoo"
-              className="inline-flex items-center gap-2 bg-[#00BFA6] hover:bg-[#0da48d] text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-colors"
+              href={`mailto:${SUPPORT_EMAIL}?subject=Account%20Deletion%20Request%20%E2%80%94%20Lenderoo`}
+              className="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-colors"
             >
               <Mail className="w-4 h-4" />
               Send deletion request
@@ -134,7 +134,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
                     </li>
                   ))}
                 </ul>
-                <p className="text-xs text-slate-400 dark:text-slate-500 mt-3 italic">
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-3 italic">
                   Deletion from active databases is immediate upon confirmation. Anything
                   you're actively lending or borrowing at that moment is automatically
                   marked returned first, so the other person isn't left with a stuck loan.
@@ -160,7 +160,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
                     </li>
                   ))}
                 </ul>
-                <p className="text-xs text-slate-400 dark:text-slate-500 mt-3 italic">
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-3 italic">
                   Nothing retained can be used to identify or contact you after deletion.
                 </p>
               </div>
@@ -170,8 +170,8 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-10 text-xs text-slate-400 space-y-1">
-          <p>Questions? Email <a href="mailto:support@lenderoo.app" className="underline hover:text-slate-600 dark:hover:text-slate-300">support@lenderoo.app</a></p>
+        <div className="text-center mt-10 text-xs text-slate-600 dark:text-slate-400 space-y-1">
+          <p>Questions? Email <a href={`mailto:${SUPPORT_EMAIL}`} className="underline hover:text-slate-600 dark:hover:text-slate-300">{SUPPORT_EMAIL}</a></p>
           <p>© 2026 Zepira Labs. Lenderoo — com.zepira.lenderoo</p>
         </div>
 
