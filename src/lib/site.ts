@@ -1,4 +1,5 @@
 // Single place for site-wide facts. Change a value here, not in components.
+import pages from "./pages.json";
 
 /** Canonical origin: the apex domain, no www (www redirects here). */
 export const SITE_URL = "https://lenderoo.app";
@@ -21,10 +22,5 @@ export const STORE_LINKS: { appStore: string | null; googlePlay: string | null }
 
 export const isOnAnyStore = Boolean(STORE_LINKS.appStore || STORE_LINKS.googlePlay);
 
-/** Per-route document titles. */
-export const PAGE_TITLES: Record<string, string> = {
-  "/": "Lenderoo: lend and borrow with friends",
-  "/privacy": "Privacy policy | Lenderoo",
-  "/delete-data": "Delete your account and data | Lenderoo",
-  "/roadmap": "Roadmap and release notes | Lenderoo",
-};
+/** Per-route titles and descriptions. Also read by scripts/route-heads.mjs at build time. */
+export const PAGES: { path: string; title: string; description: string }[] = pages;

@@ -1,216 +1,182 @@
 import React from "react";
-import { SUPPORT_EMAIL } from "../lib/site";
-import { Shield, Mail, Trash2, ArrowLeft, Database, Bell, Lock, CreditCard } from "lucide-react";
+import LegalPage, { Section, P, List, A } from "./LegalPage";
+import { SUPPORT_EMAIL, DEVELOPER_NAME } from "../lib/site";
 
 interface PrivacyPolicyProps {
   onBackToHome: () => void;
 }
 
+// Keep this page in step with the app. Facts checked against the Lenderoo repo
+// (supabase/migrations, supabase/functions, lib/services) on 8 Nov 2026.
 export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
-  const lastUpdated = "July 16, 2026";
-
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        
-        {/* Navigation / Header */}
-        <div className="flex items-center justify-between mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
-          <button
-            onClick={onBackToHome}
-            className="flex items-center gap-2 text-sm font-semibold text-teal-700 dark:text-teal-300 hover:text-teal-900 dark:hover:text-teal-200 transition-colors group cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>Back to Home</span>
-          </button>
-          
-          <div className="text-right">
-          </div>
-        </div>
+    <LegalPage
+      title="Privacy policy"
+      updated="8 November 2026"
+      onBackToHome={onBackToHome}
+      intro={
+        <p>
+          Lenderoo is made by {DEVELOPER_NAME}, an Australian developer. This policy explains what the app collects, why,
+          who can see it and how to delete it. In short: we collect what the app needs to work, we don't sell it, and
+          there are no ads, analytics or tracking in Lenderoo.
+        </p>
+      }
+    >
+      <Section title="What we collect">
+        <List>
+          <li>
+            <strong>Your account:</strong> your email address, a password (stored only as a secure hash), the name you
+            choose and, if you add one, your phone number.
+          </li>
+          <li>
+            <strong>Profile photo:</strong> only if you add one.
+          </li>
+          <li>
+            <strong>Your library:</strong> the things you add, with their names, descriptions, photos, notes, category
+            and details such as a book's author or ISBN.
+          </li>
+          <li>
+            <strong>Friends and lending:</strong> who you're friends with, borrow requests and the notes on them, loan
+            dates, due dates, returns and borrowing history. Also items you've favourited or asked to be told about when
+            they're available.
+          </li>
+          <li>
+            <strong>Notifications:</strong> a push token from Apple or Google that lets us send notifications to your
+            device.
+          </li>
+          <li>
+            <strong>Feedback you send:</strong> your comment, any screenshots you attach, your device model, operating
+            system version and app version. Feedback isn't linked to your account.
+          </li>
+        </List>
+        <P>
+          We don't collect your location, date of birth or payment details. Lenderoo has no ads, no analytics and no
+          crash-reporting or tracking tools.
+        </P>
+      </Section>
 
-        {/* Title */}
-        <div className="text-center mb-12">
-          <div className="inline-flex p-3 bg-teal-50 dark:bg-teal-950/40 rounded-full mb-4 text-teal-700 dark:text-teal-300">
-            <Shield className="w-8 h-8" />
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mb-3">
-            Privacy Policy
-          </h1>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
-            Last Updated: <span className="font-bold">{lastUpdated}</span>
-          </p>
-        </div>
+      <Section title="Finding friends from your contacts">
+        <P>
+          If you choose to find friends from your contacts, the app turns each contact's phone numbers and email
+          addresses into hashes (scrambled codes) on your phone and sends only the hashes to our server to look for
+          matches. Your contacts' names never leave your phone, and we don't keep the hashes after the check. You can use
+          Lenderoo without ever allowing access to your contacts.
+        </P>
+      </Section>
 
-        {/* Main Content Layout */}
-        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm leading-relaxed space-y-8">
-          
-          {/* Quick Summary Box */}
-          <div className="bg-teal-50/50 dark:bg-teal-950/10 rounded-xl p-5 border border-teal-100/50 dark:border-teal-950/30">
-            <h2 className="font-extrabold text-teal-950 dark:text-teal-400 text-sm mb-2 flex items-center gap-2">
-              <Lock className="w-4 h-4" />
-              <span>Lenderoo Privacy Pledge</span>
-            </h2>
-            <p className="text-xs text-slate-600 dark:text-slate-400">
-              Lenderoo is built around sharing and community. Zepira Labs (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) takes your privacy seriously. We never sell, rent, or monetize your personal data in any way. The information we collect is strictly utilized to operate the social lending features of the app and to keep you notified.
-            </p>
-          </div>
+      <Section title="Who can see your information">
+        <List>
+          <li>
+            <strong>Friends you add</strong> can see your name, photo and library, what you've lent them and their
+            borrowing history with you.
+          </li>
+          <li>
+            <strong>Other Lenderoo users</strong> can find you by searching for your name or email address, or with
+            your friend code, so they can send you a friend request. They see your name and profile photo.
+          </li>
+          <li>
+            <strong>Photos</strong> (profile and item photos) are stored at long, unlisted web addresses. Anyone who
+            has an address can open that photo, so don't add photos you'd want kept secret.
+          </li>
+          <li>
+            <strong>Feedback</strong> may be shown, without your name, on our public roadmap page.
+          </li>
+        </List>
+      </Section>
 
-          {/* Section 1 */}
-          <section className="space-y-3">
-            <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-teal-700 dark:text-teal-300">1.</span> Information We Collect
-            </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              To operate the Lenderoo application and offer its social sharing capabilities, we collect specific information when you register and use the app:
-            </p>
-            <ul className="list-disc pl-5 text-sm text-slate-600 dark:text-slate-400 space-y-3">
-              <li>
-                <strong className="text-slate-850 dark:text-slate-300">Account Credentials:</strong> Your email address, a unique username, a display name, and a securely encrypted password are required to create an account, log you in, and identify you to friends.
-              </li>
-              <li>
-                <strong className="text-slate-850 dark:text-slate-300">Profile Photo (Optional):</strong> You can optionally upload a profile image to help friends easily recognize you.
-              </li>
-              <li>
-                <strong className="text-slate-850 dark:text-slate-300">Library Items:</strong> We store the lists of items (books, tools, games, outdoor equipment, etc.) that you actively choose to add to your personal Lenderoo library.
-              </li>
-              <li>
-                <strong className="text-slate-850 dark:text-slate-300">Friend Connections:</strong> We store the user IDs of friends you choose to connect with so you can view each other&apos;s libraries.
-              </li>
-              <li>
-                <strong className="text-slate-850 dark:text-slate-300">Device Contacts (optional):</strong> If you choose to find friends using your phone&apos;s contact list, Lenderoo reads your device contacts and creates a one-way cryptographic hash of each phone number and email address directly on your device. Only these anonymized hashes — never your contacts&apos; actual names, phone numbers, or email addresses — are sent to our servers to check for matching Lenderoo accounts. Your raw contact data never leaves your device and is never stored by us.
-              </li>
-              <li>
-                <strong className="text-slate-850 dark:text-slate-300">Borrow & Lend History:</strong> We store records of borrow requests, including the item, the requester, dates, approvals, and return states to track item locations.
-              </li>
-            </ul>
-          </section>
+      <Section title="Why we use it">
+        <P>
+          Only to run Lenderoo: to sign you in, show your library to your friends, handle borrow requests, send
+          notifications and reminders (for example, when something is due back), answer your support emails and fix
+          problems you report. We don't sell or rent your information, and we don't use it for advertising.
+        </P>
+      </Section>
 
-          {/* Section 2 */}
-          <section className="space-y-3">
-            <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-teal-700 dark:text-teal-300">2.</span> Technical Infrastructure & Services
-            </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              Lenderoo relies on secure third-party infrastructure providers to run core app systems. These third parties only process data according to strict privacy guidelines:
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-              <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex gap-3 bg-slate-50/50 dark:bg-slate-900/50">
-                <Database className="w-5 h-5 text-teal-700 dark:text-teal-300 flex-shrink-0" />
-                <div>
-                  <h3 className="text-xs font-bold mb-1">Backend & Authentication (Supabase)</h3>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-normal">
-                    We use Supabase for database hosting, user login authentication, and media storage. Your data is securely stored inside our designated Supabase clusters.
-                  </p>
-                </div>
-              </div>
+      <Section title="Services we use">
+        <P>Lenderoo relies on a few other companies to work. Each one only gets what it needs:</P>
+        <List>
+          <li>
+            <strong>Supabase</strong> stores your account, library and photos, and runs the app's server. Its servers
+            may be outside Australia.
+          </li>
+          <li>
+            <strong>Expo</strong> (650 Industries) delivers push notifications and app updates. Notifications include
+            the text shown on your screen, such as a friend's name and an item's name.
+          </li>
+          <li>
+            <strong>Hardcover</strong> receives the book titles you search for, to find covers and details.{" "}
+            <strong>UPCitemdb</strong> receives barcodes you scan. Neither receives your name, email or account
+            details, but they can see your device's internet address, as any website can. Book covers are loaded from
+            those services' servers.
+          </li>
+          <li>
+            <strong>Apple and Google</strong> provide the app stores and notification delivery, under their own
+            privacy policies.
+          </li>
+        </List>
+        <P>
+          Some of these companies store data overseas, including in the United States. We choose services with strong
+          security, but overseas laws may not protect your information in the same way as Australian law.
+        </P>
+        <P>
+          We may also disclose information if the law requires it, or to protect someone's safety.
+        </P>
+      </Section>
 
-              <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex gap-3 bg-slate-50/50 dark:bg-slate-900/50">
-                <Bell className="w-5 h-5 text-teal-700 dark:text-teal-300 flex-shrink-0" />
-                <div>
-                  <h3 className="text-xs font-bold mb-1">Push Notifications (Expo Notifications)</h3>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-normal">
-                    To keep you updated when a friend requests an item or sends a reminder, we use Expo Notifications. This involves sending anonymous notification tokens to route messages safely to your specific device, on both iOS and Android.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
+      <Section title="Permissions on your phone">
+        <List>
+          <li>
+            <strong>Camera:</strong> to scan barcodes and take photos of your things or your profile photo.
+          </li>
+          <li>
+            <strong>Photos:</strong> to choose item photos, a profile photo or a screenshot for feedback.
+          </li>
+          <li>
+            <strong>Contacts:</strong> to find friends who already use Lenderoo (see above).
+          </li>
+          <li>
+            <strong>Notifications:</strong> for borrow requests, handovers and reminders.
+          </li>
+        </List>
+        <P>Each one is optional, and you can turn it off at any time in your phone's settings.</P>
+      </Section>
 
-          {/* Section 3 */}
-          <section className="space-y-3">
-            <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-teal-700 dark:text-teal-300">3.</span> Financial and Payment Data
-            </h2>
-            <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex gap-3 bg-slate-50/50 dark:bg-slate-900/50">
-              <CreditCard className="w-5 h-5 text-teal-700 dark:text-teal-300 flex-shrink-0" />
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Lenderoo is currently free to use and does not process payments, subscriptions, or in-app purchases of any kind. We do not collect, process, or store your credit card, bank account, or other financial details. If we introduce a paid feature in the future, it will be handled exclusively through Apple&apos;s or Google&apos;s official in-app purchase systems — which keep your payment details private from us — and this Privacy Policy will be updated before that feature launches.
-              </p>
-            </div>
-          </section>
+      <Section title="Keeping and deleting your information">
+        <P>
+          We keep your information while you have an account. You can delete your account at any time in the app under{" "}
+          <strong>Settings → Delete Account</strong>, or by emailing us. See{" "}
+          <A href="/delete-data">Delete your account and data</A> for exactly what's removed and what's kept.
+        </P>
+      </Section>
 
-          {/* Section 4 */}
-          <section className="space-y-3">
-            <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-teal-700 dark:text-teal-300">4.</span> Data Sharing & Commercialization
-            </h2>
-            <div className="bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 p-4 rounded-xl border border-emerald-500/20 text-sm">
-              <strong>Absolutely No Sale of Data:</strong> We do not, have never, and will never sell, lease, exchange, or commercialize your personal information to third-party advertisers, data brokers, or marketing networks.
-            </div>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              <strong className="text-slate-850 dark:text-slate-300">Legal Disclosures:</strong> We only disclose information if strictly required to comply with legally valid subpoenas, judicial orders, or to protect the physical safety, property, or legal rights of other users.
-            </p>
-          </section>
+      <Section title="Seeing or correcting your information">
+        <P>
+          You can change your name, email, phone number and photo in the app. To get a copy of the information we hold
+          about you, or to ask us to correct it, email <A href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</A>.
+        </P>
+      </Section>
 
-          {/* Section 5 */}
-          <section className="space-y-3">
-            <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-teal-700 dark:text-teal-300">5.</span> Account Deletion & Right to be Forgotten
-            </h2>
-            <div className="flex gap-4 items-start bg-slate-50/50 dark:bg-slate-900/50 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
-              <div className="p-3 bg-red-50 dark:bg-red-950/20 text-red-500 rounded-lg flex-shrink-0 mt-1">
-                <Trash2 className="w-5 h-5" />
-              </div>
-              <div className="space-y-2">
-                <p className="text-sm text-slate-650 dark:text-slate-350">
-                  You hold full ownership of your data. You can delete your account and permanently purge your records at any time:
-                </p>
-                <ol className="list-decimal pl-5 text-sm text-slate-600 dark:text-slate-400 space-y-1">
-                  <li>Navigate to the <span className="font-bold text-slate-950 dark:text-white">Settings</span> menu inside the Lenderoo app.</li>
-                  <li>Tap the <span className="font-bold text-slate-950 dark:text-white">Delete Account</span> option and confirm.</li>
-                </ol>
-                <p className="text-xs text-slate-600 dark:text-slate-400 italic mt-3">
-                  Upon confirmation, your login access is immediately and permanently disabled, and your email address, password, username, display name, profile photo, and phone number are permanently erased and cannot be recovered. Library items and friend connections with no one else involved are deleted outright; anything currently on loan (to you or from you) is automatically marked returned. If you share a borrowing history with a friend, that shared record is kept so their history isn&apos;t broken — it will show your entry as &quot;Deleted User&quot; and contains nothing that identifies or could be used to contact you.
-                </p>
-              </div>
-            </div>
-          </section>
+      <Section title="Children">
+        <P>
+          Lenderoo isn't intended for children under 13, and we don't knowingly collect information from them. If you
+          think a child has signed up, email us and we'll delete the account.
+        </P>
+      </Section>
 
-          {/* Section 6 */}
-          <section className="space-y-3">
-            <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="text-teal-700 dark:text-teal-300">6.</span> Children&apos;s Privacy
-            </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              Lenderoo is not directed at or intended for children under the age of 13. We do not knowingly collect personal data from children under 13. If you believe a child has provided us with personal information, please contact us immediately so we can remove it.
-            </p>
-          </section>
+      <Section title="Questions and complaints">
+        <P>
+          Email <A href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</A> and we'll reply within 30 days. If you're not
+          happy with our answer, you can complain to the{" "}
+          <A href="https://www.oaic.gov.au/privacy/privacy-complaints">Office of the Australian Information Commissioner</A>.
+        </P>
+      </Section>
 
-          {/* Section 7 */}
-          <section className="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
-            <h2 className="text-lg font-extrabold text-slate-950 dark:text-white flex items-center gap-2 pb-1">
-              <span className="text-teal-700 dark:text-teal-300">7.</span> Contact Us
-            </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              For any questions, data access requests, or issues regarding this Privacy Policy, please reach out directly to:
-            </p>
-            <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-2">
-              <div className="flex items-center gap-2.5">
-                <div className="bg-teal-100 dark:bg-teal-950/40 p-2 rounded-lg text-teal-700 dark:text-teal-300">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-xs font-bold">Zepira Labs</h3>
-                  <p className="text-xs font-mono text-slate-600 dark:text-slate-400">{SUPPORT_EMAIL}</p>
-                </div>
-              </div>
-              <a
-                href={`mailto:${SUPPORT_EMAIL}`}
-                className="inline-flex justify-center items-center bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs px-4 py-2.5 rounded-lg shadow-sm transition-colors cursor-pointer"
-              >
-                Send Email
-              </a>
-            </div>
-          </section>
-
-        </div>
-
-        {/* Footer info */}
-        <div className="text-center mt-12 text-xs text-slate-600 dark:text-slate-400">
-          <p>© 2026 Zepira Labs. All rights reserved.</p>
-        </div>
-
-      </div>
-    </div>
+      <Section title="Changes to this policy">
+        <P>
+          If we change how Lenderoo uses your information, we'll update this page and the date at the top. For a
+          significant change, we'll also let you know in the app.
+        </P>
+      </Section>
+    </LegalPage>
   );
 }

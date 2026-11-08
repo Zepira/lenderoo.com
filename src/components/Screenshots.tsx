@@ -1,89 +1,65 @@
 import React from "react";
-import { Shield } from "lucide-react";
+import PhoneScreen from "./PhoneScreen";
 
+// Same screens as the App Store listing (store/screenshots/ios in the app repo).
+// Every name and cover in them is made up.
 const SCREENS = [
   {
-    src: "/screens/welcome.png",
-    label: "1. Welcome & Sign In",
-    alt: "Lenderoo sign-in screen with email and password fields",
+    name: "home",
+    caption: "Everything you've lent, in one place",
+    alt: "Home screen with counts of items in your library, lent out and borrowed",
   },
   {
-    src: "/screens/add-book.png",
-    label: "2. Add a Book",
-    alt: "Adding a book: searching by title shows matching books with covers",
+    name: "requests",
+    caption: "Say yes or no to borrow requests",
+    alt: "Two borrow requests, a snorkel set and a ski jacket, each with a note from the friend and Approve and Deny buttons",
   },
   {
-    src: "/screens/book-detail.png",
-    label: "3. Book Detail",
-    alt: "Book details filled in automatically: cover, title, author and series",
+    name: "library",
+    caption: "Your whole library, covers and all",
+    alt: "My Library: a grid of books with their covers, plus kitchen and clothing items marked Available",
   },
   {
-    src: "/screens/settings.png",
-    label: "4. Friends & Settings",
-    alt: "Settings screen with profile photo and links to friends and profile",
+    name: "item",
+    caption: "See who has it, and for how long",
+    alt: "A book's page: owner, condition, how long it's been out, who it's lent to and its borrowing history",
+  },
+  {
+    name: "friends",
+    caption: "Lend only to friends you add",
+    alt: "My Friends: a list of friends with animal avatars and how many items each shares",
+  },
+  {
+    name: "explore",
+    caption: "Browse what your friends can lend",
+    alt: "Explore: search your friends' items or browse by category, such as books, tools, clothing and games",
   },
 ];
 
 export default function Screenshots() {
   return (
-    <section id="screenshots-section" className="py-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-300 relative border-t border-slate-200/40 dark:border-slate-800/40">
-
-      {/* Decorative Orbs */}
-      <div aria-hidden="true" className="absolute top-1/3 right-1/4 w-72 h-72 bg-teal-500/10 dark:bg-teal-500/5 rounded-full filter blur-3xl pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-xs font-black text-teal-700 dark:text-teal-300 uppercase tracking-widest">
-            App Gallery
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mt-3">
-            A beautiful, intuitive mobile experience
+    <section className="border-t border-slate-200/60 bg-slate-50 py-20 dark:border-slate-800/60 dark:bg-slate-900">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-14 max-w-2xl text-center">
+          <p className="text-xs font-black uppercase tracking-widest text-teal-700 dark:text-teal-300">Screenshots</p>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+            A closer look at Lenderoo
           </h2>
-          <p className="text-base text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
-            Real screens from the app — early days, so the polish is still catching up to the feature set.
+          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-400">
+            Every name, item and book cover here is made up for the screenshots.
           </p>
         </div>
 
-        {/* Real Screenshots Row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-start justify-center max-w-5xl mx-auto">
+        <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-6 lg:gap-x-5">
           {SCREENS.map((screen) => (
-            <div key={screen.src} className="flex flex-col items-center">
-              <span className="text-xs font-bold text-slate-600 dark:text-slate-300 mb-3 uppercase tracking-wider text-center">
-                {screen.label}
-              </span>
-              {/* Phone Container */}
-              <div className="w-full max-w-[220px] bg-slate-900 rounded-[32px] p-2 shadow-2xl border-2 border-slate-800 ring-1 ring-slate-700/50 overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
-                <div className="w-full rounded-[24px] overflow-hidden">
-                  <img
-                    src={screen.src}
-                    alt={screen.alt}
-                    loading="lazy"
-                    className="w-full h-auto block"
-                  />
-                </div>
-              </div>
-            </div>
+            <li key={screen.name} className="flex flex-col items-center text-center">
+              <PhoneScreen name={screen.name} alt={screen.alt} className="w-full max-w-[220px]" />
+              <p className="mt-4 max-w-[14rem] text-sm font-semibold leading-snug text-slate-700 dark:text-slate-200">
+                {screen.caption}
+              </p>
+            </li>
           ))}
-        </div>
-
-        {/* CTA box under screenshots */}
-        <div className="mt-16 text-center max-w-lg mx-auto bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-200/60 dark:border-slate-850/80 shadow-md">
-          <div className="inline-flex p-2.5 bg-teal-50 dark:bg-teal-950/30 text-teal-600 dark:text-teal-400 rounded-xl mb-3">
-            <Shield className="w-5 h-5" aria-hidden="true" />
-          </div>
-          <p className="text-sm font-black text-teal-700 dark:text-teal-300 uppercase tracking-widest">
-            Community Focus
-          </p>
-          <h3 className="text-lg sm:text-xl font-extrabold text-slate-950 dark:text-white mt-2">
-            Built with modern standards
-          </h3>
-          <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
-            Lenderoo is built on Supabase, with secure user sessions and row-level security protecting your data. Your connections and sharing history stay private to your circle.
-          </p>
-        </div>
-
+        </ul>
       </div>
     </section>
   );

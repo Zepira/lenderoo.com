@@ -24,7 +24,7 @@ export default function NotFound({ onNavigate }: NotFoundProps) {
       <Link
         to="/"
         onNavigate={onNavigate}
-        className="mt-8 px-6 py-3 bg-teal-700 hover:bg-teal-800 text-white font-bold rounded-xl transition-colors"
+        className="mt-8 px-6 py-3 bg-brand hover:bg-brand-hover text-ink font-bold rounded-xl transition-colors"
       >
         Back to home
       </Link>

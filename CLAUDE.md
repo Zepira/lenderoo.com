@@ -69,4 +69,13 @@ without it Tailwind v4 follows the OS setting and the toggle silently breaks.
 Contrast: the brand teal `#00BFA6` is only 2.3:1 against white. Never use it
 for text or as a background behind white text; use `teal-700` (light) /
 `teal-300` (dark) for teal text. Small grey text is `slate-600` /
-`dark:slate-400` or darker.
+`dark:slate-400` or darker. Buttons are `bg-brand text-ink` (brand teal with navy
+text, 7.6:1), not white on teal. Tokens live in `@theme` in `index.css`.
+
+Screenshots in `public/screens` come from the app repo's `store/screenshots/ios`
+(360 and 720 px webp; `PhoneScreen` renders them). Page titles and descriptions
+live in `src/lib/pages.json`; `npm run build` also writes `dist/<route>.html`
+with each page's head tags (`scripts/route-heads.mjs`).
+
+The privacy policy, terms and delete-data pages are checked against the app's
+code (migrations, edge functions). Change them when the app's data handling changes.

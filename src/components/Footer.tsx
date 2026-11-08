@@ -12,6 +12,7 @@ const LINKS = [
   { label: "Home", to: "/" },
   { label: "Roadmap and release notes", to: "/roadmap" },
   { label: "Privacy policy", to: "/privacy" },
+  { label: "Terms of use", to: "/terms" },
   { label: "Delete your account and data", to: "/delete-data" },
 ];
 

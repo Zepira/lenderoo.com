@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/",
+    "title": "Lenderoo: lend and borrow with friends",
+    "description": "Lenderoo keeps track of the books, tools and games you lend to friends, and what you've borrowed from them. Free, with no ads. Coming soon to iPhone and Android."
+  },
+  {
+    "path": "/privacy",
+    "title": "Privacy policy | Lenderoo",
+    "description": "What Lenderoo collects, why, who it's shared with, and how to delete it."
+  },
+  {
+    "path": "/terms",
+    "title": "Terms of use | Lenderoo",
+    "description": "The terms for using the Lenderoo app."
+  },
+  {
+    "path": "/delete-data",
+    "title": "Delete your account and data | Lenderoo",
+    "description": "How to delete your Lenderoo account and everything in it, in the app or by email."
+  },
+  {
+    "path": "/roadmap",
+    "title": "Roadmap and release notes | Lenderoo",
+    "description": "What's new in Lenderoo and what's coming next."
+  }
+]

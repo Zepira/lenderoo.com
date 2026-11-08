@@ -126,6 +126,11 @@ Capture options (decision needed):
 12. **Privacy policy and Terms:** update privacy to list every processor and data type in B5, operator details and Australian Privacy Act; write `/terms` (B4). Re-check `/delete-data` against the delete-account function (C12).
 13. **Prerender** the routes so each has its own title, description and OG image.
 
+**Pass 2 status (8 Nov 2026):**
+- Done: screenshots from the app repo's store set (`store/screenshots/ios`, made-up demo data) as webp in `public/screens`; hero shows real screens (AppSimulator deleted); Outfit and Inter self-hosted; brand tokens in `index.css`; buttons are brand teal `#00BFA6` with ink text (7.6:1), matching the app's teal without white-on-teal; copy rewritten from the real features; privacy policy, `/terms` and `/delete-data` rewritten from the app's code; per-route `<head>` written at build time (`scripts/route-heads.mjs`, `cleanUrls`).
+- The app went back to brand teal for its icon, splash and buttons (Lenderoo PR #5), so the site's brand images stay `#00BFA6`.
+- **Blocked on the app before launch:** the privacy and deletion pages describe how the app should behave. The app doesn't yet: any signed-in user can read every user's email, phone and push token and all borrow history (RLS); delete-account leaves photos in storage and name/phone in auth metadata; the app shows no privacy, terms or support links (`lib/constants.ts` has an unused `support@lenderoo.app`); the camera permission text only mentions barcodes; the feedback form doesn't say feedback can appear on the roadmap.
+
 ### Pass 3: launch day
 
 14. Swap "Coming soon" for official App Store and Google Play badges (Apple and Google badge artwork, not hand-made buttons) with the live URLs.

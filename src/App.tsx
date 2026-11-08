@@ -6,11 +6,12 @@ import Screenshots from "./components/Screenshots";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import DataDeletion from "./components/DataDeletion";
+import Terms from "./components/Terms";
 import Roadmap from "./components/Roadmap";
 import NotFound from "./components/NotFound";
 import Link from "./components/Link";
 import GetTheApp from "./components/GetTheApp";
-import { PAGE_TITLES, SITE_URL } from "./lib/site";
+import { PAGES, SITE_URL } from "./lib/site";
 
 const THEME_COLOR = { light: "#ffffff", dark: "#020618" };
 
@@ -65,7 +66,9 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.title = PAGE_TITLES[currentPath] ?? "Page not found | Lenderoo";
+    const page = PAGES.find((p) => p.path === currentPath);
+    document.title = page?.title ?? "Page not found | Lenderoo";
+    if (page) document.querySelector('meta[name="description"]')?.setAttribute("content", page.description);
     // index.html ships the home page's canonical; point it at the current page.
     document
       .querySelector('link[rel="canonical"]')
@@ -130,6 +133,8 @@ export default function App() {
       <main id="main" tabIndex={-1} className="flex-grow focus:outline-none">
         {currentPath === "/privacy" ? (
           <PrivacyPolicy onBackToHome={() => navigate("/")} />
+        ) : currentPath === "/terms" ? (
+          <Terms onBackToHome={() => navigate("/")} />
         ) : currentPath === "/delete-data" ? (
           <DataDeletion onBackToHome={() => navigate("/")} />
         ) : currentPath === "/roadmap" ? (
@@ -145,20 +150,20 @@ export default function App() {
             </div>
 
             {/* Bottom call to action */}
-            <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-800 text-white relative overflow-hidden">
+            <section className="py-16 bg-brand text-ink relative overflow-hidden">
               <div className="max-w-4xl mx-auto px-4 text-center space-y-6 relative">
-                <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
-                  Start sharing with Lenderoo
+                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                  Why buy it when a friend has one?
                 </h2>
-                <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto">
-                  Why buy a tool you'll use once, or a book that will sit on a shelf? Join your friends on Lenderoo and share what you already own.
+                <p className="text-base sm:text-lg max-w-2xl mx-auto">
+                  The drill you'll use once, the tent for one weekend, the book you'll read and shelve. Lenderoo is free, with no ads, and works on iPhone and Android.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
-                  <GetTheApp tone="light" align="center" />
+                  <GetTheApp align="center" />
                   <Link
                     to="/privacy"
                     onNavigate={navigate}
-                    className="text-sm text-white hover:text-teal-100 underline underline-offset-4 font-semibold"
+                    className="text-sm text-ink hover:text-slate-700 underline underline-offset-4 font-semibold"
                   >
                     Privacy policy
                   </Link>
