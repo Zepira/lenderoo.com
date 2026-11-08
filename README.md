@@ -1,20 +1,17 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# lenderoo.app
 
-# Run and deploy your AI Studio app
+Marketing and legal website for the Lenderoo app (Vite + React + Tailwind v4, hosted on Vercel).
 
-This contains everything you need to run your app locally.
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build to dist/
+npm run lint     # type check
+```
 
-View your app in AI Studio: https://ai.studio/apps/9fb01544-123f-44e3-a093-b8ad99855646
+- Site-wide facts (support email, developer name, store links, page titles): `src/lib/site.ts`.
+- Store buttons show "Coming soon" until `STORE_LINKS` has URLs.
+- `/roadmap` reads release notes from Supabase; copy `.env.example` to `.env.local`.
+- Pre-launch audit and plan: `docs/LAUNCH-AUDIT.md`.
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+See `CLAUDE.md` for structure and the link to the app repo.

@@ -21,15 +21,14 @@ a diff of the other.
 Marketing/legal website for the Lenderoo app, built as a Vite 6 + React 19 +
 TypeScript single-page app. No meta-framework (not Next.js) — routing is
 hand-rolled in `src/App.tsx` via a `currentPath` state variable plus
-`pushState`/`popstate` wiring, with a GitHub Pages 404-redirect decode shim
-for static hosting. `dist/` is committed build output; `vercel.json` and a
-`CNAME` file suggest it's also deployable to Vercel.
+`pushState`/`popstate` wiring. Hosted on Vercel; `vercel.json` rewrites every
+path to `index.html` (static files in `public/` are served first).
 
 **Key Technologies:**
 - **Vite 6** as the build tool (`@vitejs/plugin-react`)
 - **React 19** with TypeScript, no router library
 - **Tailwind CSS v4** via `@tailwindcss/vite` (not the PostCSS plugin)
-- **lucide-react** for icons, **motion** for animation
+- **lucide-react** for icons
 
 ## Common Commands
 
@@ -43,17 +42,40 @@ npm run lint     # tsc --noEmit (no separate linter configured)
 ## Structure
 
 - `src/App.tsx` — routing (`currentPath` string compared against literals:
-  `/`, `/privacy`, `/delete-data`, else 404) + top-level page composition +
-  dark mode state (persisted to `localStorage`)
+  `/`, `/privacy`, `/delete-data`, `/roadmap`, else 404) + top-level page
+  composition + dark mode state + per-route `document.title`
+- `src/lib/site.ts` — single source for support email, developer name, store
+  links and page titles. Never hardcode these in components.
 - `src/components/` — one component per page/section: `Navbar`, `Hero`,
-  `Features`, `Screenshots`, `AppSimulator`, `Footer`, `KangarooLogo`,
-  `NotFound`, `PrivacyPolicy`, `DataDeletion`
+  `Features`, `Screenshots`, `AppSimulator`, `Footer`, `NotFound`,
+  `PrivacyPolicy`, `DataDeletion`, `Roadmap`, plus `Link` (use it for every
+  in-site link: a real `<a href>` with client-side navigation) and
+  `GetTheApp` (the only place store buttons are rendered)
 - `src/index.css` — Tailwind entry point
-- `public/` — static assets, GitHub Pages `404.html` redirect trick, `CNAME`
+- `public/` — static assets: `brand/` (logo mark and mascot, from the app's
+  `assets/images/icon.png` and `kangaroo.png`), favicons, `og-image.png`,
+  `robots.txt`, `sitemap.xml`
+- `docs/LAUNCH-AUDIT.md` — pre-launch audit and plan
 
 ## Styling
 
 Tailwind v4 utility classes directly in JSX, no CSS Modules or
-styled-components. Dark mode via a `dark` class toggled on
-`document.documentElement` (see `App.tsx`), not `prefers-color-scheme`
-media queries alone — respects a `localStorage` override.
+styled-components. Dark mode via a `dark` class on `document.documentElement`:
+set before first paint by the boot script in `index.html`, then by `App.tsx`.
+A saved `localStorage` choice wins, otherwise the OS setting.
+`@custom-variant dark` in `index.css` is what makes `dark:` follow the class;
+without it Tailwind v4 follows the OS setting and the toggle silently breaks.
+
+Contrast: the brand teal `#00BFA6` is only 2.3:1 against white. Never use it
+for text or as a background behind white text; use `teal-700` (light) /
+`teal-300` (dark) for teal text. Small grey text is `slate-600` /
+`dark:slate-400` or darker. Buttons are `bg-brand text-ink` (brand teal with navy
+text, 7.6:1), not white on teal. Tokens live in `@theme` in `index.css`.
+
+Screenshots in `public/screens` come from the app repo's `store/screenshots/ios`
+(360 and 720 px webp; `PhoneScreen` renders them). Page titles and descriptions
+live in `src/lib/pages.json`; `npm run build` also writes `dist/<route>.html`
+with each page's head tags (`scripts/route-heads.mjs`).
+
+The privacy policy, terms and delete-data pages are checked against the app's
+code (migrations, edge functions). Change them when the app's data handling changes.

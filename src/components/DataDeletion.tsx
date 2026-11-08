@@ -1,181 +1,85 @@
 import React from "react";
-import { Trash2, ArrowLeft, CheckCircle, XCircle, Mail, AlertTriangle, Smartphone } from "lucide-react";
+import { Mail } from "lucide-react";
+import LegalPage, { Section, P, List, A } from "./LegalPage";
+import { SUPPORT_EMAIL, DEVELOPER_NAME } from "../lib/site";
 
 interface DataDeletionProps {
   onBackToHome: () => void;
 }
 
+const MAILTO = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent("Delete my Lenderoo account")}`;
+
+// Matches supabase/functions/delete-account in the Lenderoo repo. Update both together.
 export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
-  const lastUpdated = "July 16, 2026";
-
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
+    <LegalPage
+      title="Delete your account and data"
+      updated="8 November 2026"
+      onBackToHome={onBackToHome}
+      intro={
+        <p>
+          How to delete your Lenderoo account (an app by {DEVELOPER_NAME}) and the information in it, and what happens
+          when you do.
+        </p>
+      }
+    >
+      <Section title="In the app (fastest)">
+        <ol className="list-decimal space-y-2 pl-5 text-base text-slate-700 marker:font-bold marker:text-teal-700 dark:text-slate-300 dark:marker:text-teal-300">
+          <li>Open Lenderoo on your iPhone or Android phone.</li>
+          <li>
+            Go to <strong>Settings</strong> and tap <strong>Delete Account</strong>.
+          </li>
+          <li>Confirm. Your account is deleted straight away, and this can't be undone.</li>
+        </ol>
+      </Section>
 
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
-          <button
-            onClick={onBackToHome}
-            className="flex items-center gap-2 text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors group cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>Back to Home</span>
-          </button>
-          <span className="text-xs font-mono text-slate-400">com.zepira.lenderoo</span>
-        </div>
+      <Section title="By email">
+        <P>
+          If you can't get into the app, email <A href={MAILTO}>{SUPPORT_EMAIL}</A> from the email address on your
+          account, with the subject "Delete my Lenderoo account". We'll confirm with you, then delete it within 7 days.
+        </P>
+        <a
+          href={MAILTO}
+          className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-sm font-bold text-ink hover:bg-brand-hover"
+        >
+          <Mail className="h-4 w-4" aria-hidden="true" />
+          Email a deletion request
+        </a>
+      </Section>
 
-        {/* Title */}
-        <div className="text-center mb-10">
-          <div className="inline-flex p-3 bg-red-50 dark:bg-red-950/30 rounded-full mb-4 text-red-500">
-            <Trash2 className="w-8 h-8" />
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mb-3">
-            Account & Data Deletion
-          </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm max-w-xl mx-auto">
-            This page describes how <strong className="text-slate-700 dark:text-slate-300">Lenderoo</strong> users can request permanent deletion of their account and associated data, as operated by <strong className="text-slate-700 dark:text-slate-300">Zepira Labs</strong>.
-          </p>
-          <p className="text-xs text-slate-400 mt-2">Last updated: {lastUpdated}</p>
-        </div>
+      <Section title="What's deleted">
+        <List>
+          <li>Your name, email address, phone number, password and profile photo. You can't sign in again.</li>
+          <li>
+            Your library: every item you own, with its photos and its loan history. Friends who borrowed something from
+            you lose the record of that loan too.
+          </li>
+          <li>Your friend connections, borrow requests, favourites and "tell me when it's available" requests.</li>
+          <li>Your push notification token and the contact-matching codes for your email and phone.</li>
+        </List>
+        <P>
+          Anything on loan at the time is marked as returned first, so nobody's left waiting on a loan that can't
+          finish. Things you've borrowed stay with their owners.
+        </P>
+      </Section>
 
-        <div className="space-y-6">
-
-          {/* Method 1 — In-app */}
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 rounded-lg">
-                <Smartphone className="w-5 h-5" />
-              </div>
-              <div>
-                <h2 className="text-base font-extrabold text-slate-950 dark:text-white">Option 1 — Delete directly in the app</h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Fastest method. Instant and does not require contacting us.</p>
-              </div>
-            </div>
-            <ol className="space-y-3">
-              {[
-                "Open the Lenderoo app on your device (iOS or Android).",
-                <>Tap the <span className="font-bold text-slate-950 dark:text-white">Profile</span> tab or open the <span className="font-bold text-slate-950 dark:text-white">Settings</span> menu.</>,
-                <>Scroll to the bottom and tap <span className="font-bold text-red-600 dark:text-red-400">Delete Account</span>.</>,
-                "Confirm the deletion when prompted. This action is immediate and cannot be undone.",
-              ].map((step, i) => (
-                <li key={i} className="flex gap-3 items-start">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 text-xs font-black flex items-center justify-center mt-0.5">
-                    {i + 1}
-                  </span>
-                  <span className="text-sm text-slate-600 dark:text-slate-400">{step}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          {/* Method 2 — Email */}
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="p-2 bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 rounded-lg">
-                <Mail className="w-5 h-5" />
-              </div>
-              <div>
-                <h2 className="text-base font-extrabold text-slate-950 dark:text-white">Option 2 — Request deletion by email</h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Use this if you no longer have access to the app.</p>
-              </div>
-            </div>
-            <ol className="space-y-3 mb-6">
-              {[
-                <>Send an email to <span className="font-mono font-bold text-teal-600 dark:text-teal-400">support@lenderoo.app</span> from the email address associated with your Lenderoo account.</>,
-                <>Use the subject line: <span className="font-mono font-bold text-slate-950 dark:text-white">Account Deletion Request — Lenderoo</span></>,
-                "Include your Lenderoo username or registered email address so we can locate your account.",
-                "We will process your request and send a confirmation within 7 business days.",
-              ].map((step, i) => (
-                <li key={i} className="flex gap-3 items-start">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 text-xs font-black flex items-center justify-center mt-0.5">
-                    {i + 1}
-                  </span>
-                  <span className="text-sm text-slate-600 dark:text-slate-400">{step}</span>
-                </li>
-              ))}
-            </ol>
-            <a
-              href="mailto:support@lenderoo.app?subject=Account%20Deletion%20Request%20%E2%80%94%20Lenderoo"
-              className="inline-flex items-center gap-2 bg-[#00BFA6] hover:bg-[#0da48d] text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              Send deletion request
-            </a>
-          </div>
-
-          {/* What gets deleted vs kept */}
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="p-2 bg-amber-50 dark:bg-amber-950/30 text-amber-500 rounded-lg">
-                <AlertTriangle className="w-5 h-5" />
-              </div>
-              <h2 className="text-base font-extrabold text-slate-950 dark:text-white">What data is deleted and what is retained</h2>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Deleted */}
-              <div className="rounded-xl border border-red-100 dark:border-red-900/30 bg-red-50/40 dark:bg-red-950/10 p-4">
-                <h3 className="text-xs font-extrabold text-red-600 dark:text-red-400 uppercase tracking-wide mb-3 flex items-center gap-1.5">
-                  <XCircle className="w-3.5 h-3.5" /> Permanently deleted
-                </h3>
-                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                  {[
-                    "Email address and password (login access is disabled immediately)",
-                    "Username, display name, and phone number",
-                    "Profile photo",
-                    "Friend connections and pending friend/borrow requests",
-                    "Favourites and \"notify me\" subscriptions",
-                    "Push notification device tokens",
-                    "Library items no one else is currently borrowing",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-2 items-start">
-                      <span className="text-red-400 mt-0.5 flex-shrink-0">✕</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-xs text-slate-400 dark:text-slate-500 mt-3 italic">
-                  Deletion from active databases is immediate upon confirmation. Anything
-                  you're actively lending or borrowing at that moment is automatically
-                  marked returned first, so the other person isn't left with a stuck loan.
-                </p>
-              </div>
-
-              {/* Retained */}
-              <div className="rounded-xl border border-emerald-100 dark:border-emerald-900/30 bg-emerald-50/40 dark:bg-emerald-950/10 p-4">
-                <h3 className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-3 flex items-center gap-1.5">
-                  <CheckCircle className="w-3.5 h-3.5" /> Retained
-                </h3>
-                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                  {[
-                    { item: "Automated database backups", note: "Purged within 30 days per Supabase backup rotation policy." },
-                    { item: "Shared borrowing history", note: "If you've borrowed from or lent to a friend, that record is kept so their history isn't broken — shown to them as \"Deleted User.\"" },
-                  ].map(({ item, note }) => (
-                    <li key={item} className="flex gap-2 items-start">
-                      <span className="text-emerald-500 mt-0.5 flex-shrink-0">↻</span>
-                      <span>
-                        <span className="font-semibold text-slate-700 dark:text-slate-300">{item}</span>
-                        <span className="block text-xs text-slate-500 dark:text-slate-500 mt-0.5">{note}</span>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-xs text-slate-400 dark:text-slate-500 mt-3 italic">
-                  Nothing retained can be used to identify or contact you after deletion.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Footer */}
-        <div className="text-center mt-10 text-xs text-slate-400 space-y-1">
-          <p>Questions? Email <a href="mailto:support@lenderoo.app" className="underline hover:text-slate-600 dark:hover:text-slate-300">support@lenderoo.app</a></p>
-          <p>© 2026 Zepira Labs. Lenderoo — com.zepira.lenderoo</p>
-        </div>
-
-      </div>
-    </div>
+      <Section title="What's kept">
+        <List>
+          <li>
+            <strong>Loans of your friends' things.</strong> If you borrowed something from a friend, their item's
+            history keeps a record of the loan (the dates and any notes on it), shown with "Deleted User" in place of
+            your name.
+          </li>
+          <li>
+            <strong>Feedback you sent.</strong> It isn't linked to your account, so we can't find it to delete it. If
+            you want a particular piece of feedback removed, email us and describe it.
+          </li>
+          <li>
+            <strong>Backups.</strong> Copies in our hosting provider's backups are overwritten within 30 days.
+          </li>
+        </List>
+        <P>None of what's kept includes your name, email address, phone number or photo.</P>
+      </Section>
+    </LegalPage>
   );
 }

@@ -1,194 +1,158 @@
-import React from "react";
-import { Sun, Moon, ArrowDownToLine, Menu, X, ShieldAlert } from "lucide-react";
-import KangarooLogo from "./KangarooLogo";
+import React, { useEffect } from "react";
+import { Sun, Moon, Menu, X } from "lucide-react";
+import Link from "./Link";
+import GetTheApp from "./GetTheApp";
+import { isOnAnyStore } from "../lib/site";
 
 interface NavbarProps {
   darkMode: boolean;
   onToggleDarkMode: () => void;
   currentPath: string;
   onNavigate: (path: string) => void;
-  onScrollToSection: (elementId: string) => void;
 }
 
-export default function Navbar({
-  darkMode,
-  onToggleDarkMode,
-  currentPath,
-  onNavigate,
-  onScrollToSection,
-}: NavbarProps) {
+const SECTION_LINKS = [
+  { label: "Features", to: "/#features-section" },
+  { label: "Screenshots", to: "/#screenshots-section" },
+];
+
+const PAGE_LINKS = [
+  { label: "Roadmap", to: "/roadmap" },
+  { label: "Privacy policy", to: "/privacy" },
+];
+
+export default function Navbar({ darkMode, onToggleDarkMode, currentPath, onNavigate }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
-  const navItems = [
-    { label: "Features", sectionId: "features-section" },
-    { label: "App Demo", sectionId: "demo-section" },
-    { label: "Screenshots", sectionId: "screenshots-section" },
-  ];
+  // Close the mobile menu with Escape.
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMobileMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileMenuOpen]);
 
-  const handleNavClick = (sectionId: string) => {
+  const go = (to: string) => {
     setMobileMenuOpen(false);
-    if (currentPath !== "/") {
-      onNavigate("/");
-      // Wait for navigation and DOM update before scrolling
-      setTimeout(() => {
-        onScrollToSection(sectionId);
-      }, 100);
-    } else {
-      onScrollToSection(sectionId);
-    }
+    onNavigate(to);
   };
 
-  const handlePrivacyClick = () => {
-    setMobileMenuOpen(false);
-    onNavigate("/privacy");
-  };
+  const themeLabel = darkMode ? "Switch to light mode" : "Switch to dark mode";
 
-  const handleRoadmapClick = () => {
-    setMobileMenuOpen(false);
-    onNavigate("/roadmap");
-  };
+  const desktopLinkClass = (active: boolean) =>
+    `text-sm font-semibold transition-colors ${
+      active
+        ? "text-teal-700 dark:text-teal-300"
+        : "text-slate-600 hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-300"
+    }`;
+
+  const mobileLinkClass = (active: boolean) =>
+    `block w-full px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+      active
+        ? "bg-teal-50 text-teal-800 dark:bg-slate-900 dark:text-teal-300"
+        : "text-slate-700 hover:bg-teal-50 hover:text-teal-800 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-teal-300"
+    }`;
+
+  const themeButton = (
+    <button
+      type="button"
+      onClick={onToggleDarkMode}
+      aria-label={themeLabel}
+      title={themeLabel}
+      className="p-2 rounded-xl text-slate-600 hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-300 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-colors"
+    >
+      {darkMode ? <Sun className="w-4 h-4" aria-hidden="true" /> : <Moon className="w-4 h-4" aria-hidden="true" />}
+    </button>
+  );
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
+    <header className="sticky top-0 z-50 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200/60 dark:border-slate-800/60 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          
-          {/* Logo */}
-          <div 
-            onClick={() => onNavigate("/")}
-            className="flex items-center gap-3 cursor-pointer group"
+          <Link
+            to="/"
+            onNavigate={go}
+            className="flex items-center gap-3 group rounded-xl"
+            aria-label="Lenderoo home"
           >
-            <div className="w-9 h-9 bg-[#00BFA6] rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm">
-              <div className="w-4.5 h-4.5 bg-white rounded-full flex items-center justify-center overflow-hidden">
-                <KangarooLogo size={12} variant="silhouette" className="text-[#00BFA6]" />
-              </div>
-            </div>
-            <span className="font-black text-xl tracking-tight text-slate-900 dark:text-white">
-              Lenderoo
-            </span>
-          </div>
+            <img
+              src="/brand/lenderoo-mark.webp"
+              alt=""
+              width={36}
+              height={36}
+              className="w-9 h-9 rounded-xl shadow-sm transition-transform group-hover:scale-105"
+            />
+            <span className="font-black text-xl tracking-tight text-slate-900 dark:text-white">Lenderoo</span>
+          </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {currentPath === "/" && navItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => handleNavClick(item.sectionId)}
-                className="text-sm font-semibold text-slate-600 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400 transition-colors cursor-pointer"
+          <nav aria-label="Main" className="hidden md:flex items-center gap-8">
+            {SECTION_LINKS.map((item) => (
+              <Link key={item.to} to={item.to} onNavigate={go} className={desktopLinkClass(false)}>
+                {item.label}
+              </Link>
+            ))}
+            {PAGE_LINKS.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onNavigate={go}
+                aria-current={currentPath === item.to ? "page" : undefined}
+                className={desktopLinkClass(currentPath === item.to)}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
-            <button
-              onClick={handleRoadmapClick}
-              className={`text-sm font-semibold transition-colors cursor-pointer ${
-                currentPath === "/roadmap"
-                  ? "text-teal-600 dark:text-teal-400"
-                  : "text-slate-600 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400"
-              }`}
-            >
-              Roadmap
-            </button>
-            <button
-              onClick={handlePrivacyClick}
-              className={`text-sm font-semibold transition-colors cursor-pointer ${
-                currentPath === "/privacy"
-                  ? "text-teal-600 dark:text-teal-400"
-                  : "text-slate-600 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400"
-              }`}
-            >
-              Privacy Policy
-            </button>
           </nav>
 
-          {/* Right Controls */}
           <div className="hidden md:flex items-center gap-4">
-            {/* Website Dark Mode Toggle */}
-            <button
-              onClick={onToggleDarkMode}
-              className="p-2 rounded-xl text-slate-500 hover:text-teal-600 dark:text-slate-400 dark:hover:text-teal-400 bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 transition-colors cursor-pointer"
-              title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
-            {/* Play Store Link button */}
-            <a
-              href="https://play.google.com/store/apps/details?id=com.zepira.lenderoo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-[#00BFA6] hover:bg-[#0da48d] text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-teal-600/15 hover:shadow-teal-600/20 active:scale-[0.98] transition-all cursor-pointer"
-            >
-              <ArrowDownToLine className="w-3.5 h-3.5" />
-              <span>Download for Android</span>
-            </a>
+            {themeButton}
+            {isOnAnyStore && <GetTheApp />}
           </div>
 
-          {/* Mobile menu toggle & theme toggle */}
           <div className="flex items-center gap-2 md:hidden">
+            {themeButton}
             <button
-              onClick={onToggleDarkMode}
-              className="p-2 rounded-xl text-slate-500 hover:text-teal-600 dark:text-slate-400 dark:hover:text-teal-400 bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 transition-colors cursor-pointer"
-            >
-              {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
-            <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors cursor-pointer"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+              className="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
             </button>
           </div>
-
         </div>
       </div>
 
-      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 space-y-3 shadow-lg animate-fade-in">
-          {currentPath === "/" && navItems.map((item) => (
-            <button
-              key={item.label}
-              onClick={() => handleNavClick(item.sectionId)}
-              className="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-teal-50 hover:text-teal-600 dark:text-slate-300 dark:hover:bg-slate-900/60 dark:hover:text-teal-400 transition-colors cursor-pointer"
+        <nav
+          id="mobile-menu"
+          aria-label="Main"
+          className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 space-y-1 shadow-lg animate-fade-in"
+        >
+          {SECTION_LINKS.map((item) => (
+            <Link key={item.to} to={item.to} onNavigate={go} className={mobileLinkClass(false)}>
+              {item.label}
+            </Link>
+          ))}
+          {PAGE_LINKS.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              onNavigate={go}
+              aria-current={currentPath === item.to ? "page" : undefined}
+              className={mobileLinkClass(currentPath === item.to)}
             >
               {item.label}
-            </button>
+            </Link>
           ))}
-          <button
-            onClick={handleRoadmapClick}
-            className={`block w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer ${
-              currentPath === "/roadmap"
-                ? "bg-teal-50/80 text-teal-600 dark:bg-slate-900/60 dark:text-teal-400"
-                : "text-slate-700 hover:bg-teal-50 hover:text-teal-600 dark:text-slate-300 dark:hover:bg-slate-900/60 dark:hover:text-teal-400"
-            }`}
-          >
-            Roadmap
-          </button>
-          <button
-            onClick={handlePrivacyClick}
-            className={`block w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer ${
-              currentPath === "/privacy"
-                ? "bg-teal-50/80 text-teal-600 dark:bg-slate-900/60 dark:text-teal-400"
-                : "text-slate-700 hover:bg-teal-50 hover:text-teal-600 dark:text-slate-300 dark:hover:bg-slate-900/60 dark:hover:text-teal-400"
-            }`}
-          >
-            Privacy Policy
-          </button>
-          
-          <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
-            <a
-              href="https://play.google.com/store/apps/details?id=com.zepira.lenderoo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 bg-[#00BFA6] hover:bg-[#0da48d] text-white font-bold text-sm py-3 rounded-xl shadow-md cursor-pointer"
-            >
-              <ArrowDownToLine className="w-4 h-4" />
-              <span>Download Lenderoo (Android)</span>
-            </a>
-          </div>
-        </div>
+          {isOnAnyStore && (
+            <div className="pt-3 mt-2 border-t border-slate-100 dark:border-slate-800">
+              <GetTheApp align="center" />
+            </div>
+          )}
+        </nav>
       )}
     </header>
   );

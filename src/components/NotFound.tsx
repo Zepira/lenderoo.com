@@ -1,23 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Link from "./Link";
 
 interface NotFoundProps {
   onNavigate: (path: string) => void;
 }
 
 export default function NotFound({ onNavigate }: NotFoundProps) {
+  // The host serves index.html (status 200) for every path, so tell crawlers
+  // not to index this page.
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex";
+    document.head.appendChild(meta);
+    return () => meta.remove();
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 text-center">
-      <h1 className="text-8xl font-black text-teal-600 dark:text-teal-400">404</h1>
-      <h2 className="mt-4 text-2xl font-bold text-slate-800 dark:text-slate-100">Page not found</h2>
-      <p className="mt-2 text-slate-500 dark:text-slate-400">
-        This page doesn't exist.
-      </p>
-      <button
-        onClick={() => onNavigate("/")}
-        className="mt-8 px-6 py-3 bg-[#00BFA6] hover:bg-[#0da48d] text-white font-bold rounded-xl transition-colors"
+      <img src="/brand/lenderoo-mascot.webp" alt="" width={120} height={127} className="w-28 h-auto mb-4" />
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Page not found</h1>
+      <p className="mt-2 text-slate-600 dark:text-slate-300">This page doesn't exist. It may have moved.</p>
+      <Link
+        to="/"
+        onNavigate={onNavigate}
+        className="mt-8 px-6 py-3 bg-brand hover:bg-brand-hover text-ink font-bold rounded-xl transition-colors"
       >
         Back to home
-      </button>
+      </Link>
     </div>
   );
 }

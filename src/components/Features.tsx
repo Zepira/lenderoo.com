@@ -1,116 +1,109 @@
 import React from "react";
-import { Layers, Users, Bell, Moon, BookOpen, Wrench, Gamepad } from "lucide-react";
+import {
+  ScanBarcode,
+  Users,
+  MessageSquareText,
+  BellRing,
+  BookOpen,
+  Wrench,
+  Shirt,
+  Smartphone,
+  Gamepad2,
+  Trophy,
+  Utensils,
+  Box,
+} from "lucide-react";
+
+const FEATURES = [
+  {
+    icon: ScanBarcode,
+    title: "Add things in seconds",
+    description:
+      "Search for a book by title or scan its barcode, and Lenderoo fills in the cover and details. Everything else goes in with a photo and a category.",
+  },
+  {
+    icon: Users,
+    title: "Lend only to friends you add",
+    description:
+      "Your library is visible to the friends you add and no one else. There's no public feed, and no strangers asking for your drill.",
+  },
+  {
+    icon: MessageSquareText,
+    title: "Requests instead of awkward texts",
+    description:
+      "Friends ask to borrow with a note, like \"off to Byron next weekend\". You approve or decline, and you both know when it's due back.",
+  },
+  {
+    icon: BellRing,
+    title: "Reminders do the nudging",
+    description:
+      "Lenderoo reminds you when something's due back soon or running late, so you don't have to chase it. And if it never comes back, you can claim it back.",
+  },
+];
+
+const CATEGORIES = [
+  { icon: BookOpen, label: "Books" },
+  { icon: Wrench, label: "Tools" },
+  { icon: Shirt, label: "Clothing" },
+  { icon: Smartphone, label: "Electronics" },
+  { icon: Gamepad2, label: "Games" },
+  { icon: Trophy, label: "Sports" },
+  { icon: Utensils, label: "Kitchen" },
+  { icon: Box, label: "Anything else" },
+];
 
 export default function Features() {
-  const features = [
-    {
-      icon: <Layers className="w-6 h-6 text-blue-600 dark:text-blue-400" />,
-      title: "Add Items to Your Library",
-      description: "Quickly catalog your personal items, from books and cordless drills to board games and camping tents. Categorize them so they are easy for friends to discover.",
-      accent: "from-blue-500 to-blue-600"
-    },
-    {
-      icon: <Users className="w-6 h-6 text-teal-600 dark:text-teal-400" />,
-      title: "Connect with Trusted Friends",
-      description: "Lenderoo is safe because it's invite-only with friends you trust. Connect to see what your friends own and make borrowing a friendly, local conversation.",
-      accent: "from-teal-500 to-teal-600"
-    },
-    {
-      icon: <Bell className="w-6 h-6 text-amber-500 dark:text-amber-400" />,
-      title: "Real-Time Push Notifications",
-      description: "Stay in the loop with instant Expo notifications. Get notified when someone wants to borrow an item, when a request is approved, and receive friendly return reminders.",
-      accent: "from-amber-400 to-amber-500"
-    },
-    {
-      icon: <Moon className="w-6 h-6 text-violet-500 dark:text-violet-400" />,
-      title: "Dark/Light Mode Support",
-      description: "A gorgeous interface that respects your system settings. Toggle dark mode for comfortable late-night library browsing.",
-      accent: "from-violet-500 to-violet-600"
-    }
-  ];
-
   return (
-    <section id="features-section" className="py-20 bg-white dark:bg-slate-950 transition-colors duration-300 relative border-t border-slate-200/40 dark:border-slate-900/60">
-      
-      {/* Geometric Balance blueprint grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
-
-      {/* Decorative lines */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-teal-500/30 to-transparent"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-black text-teal-600 dark:text-teal-400 uppercase tracking-widest">
-            Key Features
+    <section
+      id="features-section"
+      className="scroll-mt-16 border-t border-slate-200/60 bg-white py-20 dark:border-slate-900 dark:bg-slate-950"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-14 max-w-2xl text-center">
+          <p className="text-xs font-black uppercase tracking-widest text-teal-700 dark:text-teal-300">Features</p>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+            Lending between friends, without the guesswork
           </h2>
-          <p className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white mt-3">
-            Designed for seamless, friendly sharing
-          </p>
-          <p className="text-base text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
-            Lenderoo removes the awkwardness of lending. Keep track of what you own, who has it, and when it's coming back, all inside a beautiful social layout.
+          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-400">
+            Who has your tent? When's that book coming back? Lenderoo remembers, so you don't have to.
           </p>
         </div>
 
-        {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {features.map((feature, idx) => (
-            <div
-              key={idx}
-              className="group relative p-6 sm:p-8 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 hover:border-teal-500/30 dark:hover:border-teal-500/30 hover:shadow-xl hover:shadow-teal-500/2 dark:hover:shadow-teal-500/1 transition-all duration-300"
+        <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+          {FEATURES.map(({ icon: Icon, title, description }) => (
+            <li
+              key={title}
+              className="rounded-3xl border border-slate-200/70 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900 sm:p-8"
             >
-              {/* Feature Icon Background */}
-              <div className="inline-flex p-3.5 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50 mb-6 transition-all group-hover:scale-110 group-hover:shadow-teal-500/10">
-                {feature.icon}
+              <div className="mb-5 inline-flex rounded-2xl bg-brand/15 p-3 dark:bg-brand/10">
+                <Icon className="h-6 w-6 text-teal-700 dark:text-teal-300" aria-hidden="true" />
               </div>
-
-              {/* Title & Description */}
-              <h3 className="text-lg sm:text-xl font-extrabold text-slate-950 dark:text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                {feature.description}
-              </p>
-
-              {/* Decorative side accent bar on hover */}
-              <div className={`absolute top-0 bottom-0 left-0 w-1 rounded-l-2xl bg-gradient-to-b ${feature.accent} opacity-0 group-hover:opacity-100 transition-opacity`}></div>
-            </div>
+              <h3 className="mb-2 text-xl font-bold text-slate-950 dark:text-white">{title}</h3>
+              <p className="text-base leading-relaxed text-slate-600 dark:text-slate-400">{description}</p>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Categories Section - Interactive visualizer */}
-        <div className="mt-16 p-6 sm:p-10 rounded-2xl bg-teal-50/20 dark:bg-slate-900/40 border border-teal-100/50 dark:border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="max-w-xl text-center md:text-left">
-            <span className="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase tracking-widest bg-teal-50 dark:bg-teal-950/20 px-2.5 py-1 rounded-full border border-teal-100 dark:border-teal-900/30">
-              Versatile Sharing
-            </span>
-            <h3 className="text-xl font-extrabold text-slate-950 dark:text-white mt-3">
-              Share anything in your household
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2">
-              Lenderoo supports custom tags so you are never limited. Categorize your items so friends can find exactly what they need in seconds.
+        <div className="mt-14 flex flex-col items-center justify-between gap-8 rounded-3xl border border-slate-200/70 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900 sm:p-10 md:flex-row">
+          <div className="max-w-md text-center md:text-left">
+            <h3 className="text-xl font-bold text-slate-950 dark:text-white">Share anything in your house</h3>
+            <p className="mt-2 text-base text-slate-600 dark:text-slate-300">
+              Sort what you own into categories, and friends can browse by category to find what they need.
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3 max-w-sm">
-            {[
-              { icon: <BookOpen className="w-4 h-4 text-emerald-500" />, label: "Books & Literature" },
-              { icon: <Wrench className="w-4 h-4 text-amber-500" />, label: "Tools & Equipment" },
-              { icon: <Gamepad className="w-4 h-4 text-blue-500" />, label: "Board Games" },
-              { icon: <Layers className="w-4 h-4 text-rose-500" />, label: "And so much more!" }
-            ].map((cat, idx) => (
-              <div 
-                key={idx} 
-                className="flex items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-semibold shadow-sm"
+          <ul className="flex max-w-md flex-wrap justify-center gap-2.5">
+            {CATEGORIES.map(({ icon: Icon, label }) => (
+              <li
+                key={label}
+                className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
               >
-                {cat.icon}
-                <span>{cat.label}</span>
-              </div>
+                <Icon className="h-4 w-4 text-teal-700 dark:text-teal-300" aria-hidden="true" />
+                {label}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-
       </div>
     </section>
   );

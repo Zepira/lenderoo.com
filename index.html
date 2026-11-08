@@ -1,14 +1,57 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>Lenderoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Lenderoo: lend and borrow with friends</title>
+    <meta
+      name="description"
+      content="Lenderoo keeps track of the books, tools and games you lend to friends, and what you've borrowed from them. Coming soon to iPhone and Android."
+    />
+    <link rel="canonical" href="https://lenderoo.app/" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-64.png" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Status bar / browser chrome colour; kept in sync with the theme by the boot script below -->
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lenderoo" />
+    <meta property="og:title" content="Lenderoo: lend and borrow with friends" />
+    <meta
+      property="og:description"
+      content="Keep track of what you've lent to friends and what you've borrowed. Coming soon to iPhone and Android."
+    />
+    <meta property="og:url" content="https://lenderoo.app/" />
+    <meta property="og:image" content="https://lenderoo.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The Lenderoo kangaroo holding a book" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Set the theme before first paint so there's no flash of the wrong colours.
+         A saved choice wins; otherwise follow the device setting. -->
+    <script>
+      (function () {
+        var dark = false;
+        try {
+          var saved = localStorage.getItem("theme");
+          dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        } catch (e) {}
+        var root = document.documentElement;
+        root.classList.toggle("dark", dark);
+        root.style.colorScheme = dark ? "dark" : "light";
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", dark ? "#020618" : "#ffffff");
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
