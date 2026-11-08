@@ -50,7 +50,10 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
       <Section title="What's deleted">
         <List>
           <li>Your name, email address, phone number, password and profile photo. You can't sign in again.</li>
-          <li>Your library: every item you own, with its photos.</li>
+          <li>
+            Your library: every item you own, with its photos and its loan history. Friends who borrowed something from
+            you lose the record of that loan too.
+          </li>
           <li>Your friend connections, borrow requests, favourites and "tell me when it's available" requests.</li>
           <li>Your push notification token and the contact-matching codes for your email and phone.</li>
         </List>
@@ -63,9 +66,9 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
       <Section title="What's kept">
         <List>
           <li>
-            <strong>Your friends' borrowing history.</strong> If a friend borrowed from you or lent to you, their
-            history keeps a record of the loan (the item, dates and any notes on it), shown with "Deleted User" in place
-            of your name.
+            <strong>Loans of your friends' things.</strong> If you borrowed something from a friend, their item's
+            history keeps a record of the loan (the dates and any notes on it), shown with "Deleted User" in place of
+            your name.
           </li>
           <li>
             <strong>Feedback you sent.</strong> It isn't linked to your account, so we can't find it to delete it. If
