@@ -70,6 +70,3 @@ Contrast: the brand teal `#00BFA6` is only 2.3:1 against white. Never use it
 for text or as a background behind white text; use `teal-700` (light) /
 `teal-300` (dark) for teal text. Small grey text is `slate-600` /
 `dark:slate-400` or darker.
-
-Brand images (icon, favicons, OG image, logo mark) sit on teal-700 `#0F766E`, the same
-as the app's icon, splash screen and welcome screen (changed from `#00BFA6` on 8 Nov 2026).
