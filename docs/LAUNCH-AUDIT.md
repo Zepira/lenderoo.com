@@ -96,6 +96,8 @@ Extra findings while doing Pass 1:
 
 **Decisions (7 Nov 2026):** Lenderoo launches fully free (no ads, no purchases; reassess once there's a user base). Buttons use darker teal `teal-700` `#0F766E` with white text (app change running in its own session). Support email is `support@zepiralabs.com` (ADR 0003 in zepira-apps: it's an alias of `dev@`; check it's been added in Zoho). Canonical address is `lenderoo.app` without www; Vercel still redirects the apex to www and needs flipping.
 
+**Decision (8 Nov 2026):** brand images move to teal-700 `#0F766E` so the icon, splash screen and welcome screen match the darker buttons. App: `icon.png`, `favicon.png`, adaptive icon and splash backgrounds, notification colour. Site: favicons, apple-touch-icon, `icon-192/512`, OG image, logo mark, manifest `theme_color`. `#00BFA6` stays the app's accent for icons, tints and borders.
+
 ### Screenshots (before Pass 2)
 
 The site and both store listings use one set. Goals: current UI, clean status bar (9:41, full battery, no notification icons), demo data that looks like a real person's, no third-party artwork or brand names (no Harry Potter covers, DeWalt, Catan), captions in the zepira-apps style (about six words, key words in the accent, no device bezel, flattened JPEG; LEARNINGS L-ST3).
