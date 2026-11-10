@@ -37,9 +37,9 @@ export default function LegalPage({ title, updated, intro, onBackToHome, childre
   );
 }
 
-export function Section({ title, children }: { title: string; children: React.ReactNode }) {
+export function Section({ title, id, children }: { title: string; id?: string; children: React.ReactNode }) {
   return (
-    <section className="space-y-3">
+    <section id={id} className="scroll-mt-24 space-y-3">
       <h2 className="text-xl font-bold text-slate-950 dark:text-white">{title}</h2>
       {children}
     </section>
