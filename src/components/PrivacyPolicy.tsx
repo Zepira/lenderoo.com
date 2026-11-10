@@ -7,18 +7,19 @@ interface PrivacyPolicyProps {
 }
 
 // Keep this page in step with the app. Facts checked against the Lenderoo repo
-// (supabase/migrations, supabase/functions, lib/services) on 8 Nov 2026.
+// (supabase/migrations, supabase/functions, lib/services, lib/ads) on 10 Nov 2026.
 export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
   return (
     <LegalPage
       title="Privacy policy"
-      updated="8 November 2026"
+      updated="10 November 2026"
       onBackToHome={onBackToHome}
       intro={
         <p>
           Lenderoo is made by {DEVELOPER_NAME}, an Australian developer. This policy explains what the app collects, why,
           who can see it and how to delete it. In short: we collect what the app needs to work, we don't sell it, and
-          there are no ads, analytics or tracking in Lenderoo.
+          there are no analytics in Lenderoo. The app can show one small banner ad, provided by Google; see{" "}
+          <A href="#ads">Ads</A> below.
         </p>
       }
     >
@@ -50,8 +51,9 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
           </li>
         </List>
         <P>
-          We don't collect your location, date of birth or payment details. Lenderoo has no ads, no analytics and no
-          crash-reporting or tracking tools.
+          We don't collect your location, date of birth or payment details. Lenderoo has no analytics and no
+          crash-reporting tools. The only third-party code that collects anything about your device is Google's ad
+          software, described under <A href="#ads">Ads</A>.
         </P>
       </Section>
 
@@ -88,7 +90,33 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
         <P>
           Only to run Lenderoo: to sign you in, show your library to your friends, handle borrow requests, send
           notifications and reminders (for example, when something is due back), answer your support emails and fix
-          problems you report. We don't sell or rent your information, and we don't use it for advertising.
+          problems you report. We don't sell or rent your information, and we never share your name, email, friends or items with
+          advertisers.
+        </P>
+      </Section>
+
+      <Section title="Ads" id="ads">
+        <P>
+          To help cover the cost of running Lenderoo, the app can show a small banner ad at the bottom of some screens
+          (never on forms, settings or while you're lending or returning something). Ads are provided by Google AdMob.
+          New users see no ads for their first 7 days.
+        </P>
+        <P>
+          To show ads, Google's ad software may collect your device's advertising identifier, your approximate location
+          (worked out from your internet address), information about which ads are shown and tapped, and diagnostic
+          information about the ad software. Google collects and uses this under{" "}
+          <A href="https://policies.google.com/privacy">Google's privacy policy</A> and{" "}
+          <A href="https://policies.google.com/technologies/partner-sites">
+            how Google uses information from apps that use its services
+          </A>
+          . Lenderoo doesn't send Google your name, email, friends or items.
+        </P>
+        <P>
+          <strong>Your choices.</strong> On iPhone, Lenderoo asks whether it may track you before any personalised ad
+          is shown; if you say no, you'll only see ads that aren't personalised. In the EU, the UK and some US states
+          you'll be asked for your choice before any ad is shown, and you can say no. Either way you'll see the same
+          number of ads, and we won't ask again. You can also reset or limit your advertising identifier in your phone's
+          settings.
         </P>
       </Section>
 
@@ -108,6 +136,9 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
             <strong>UPCitemdb</strong> receives barcodes you scan. Neither receives your name, email or account
             details, but they can see your device's internet address, as any website can. Book covers are loaded from
             those services' servers.
+          </li>
+          <li>
+            <strong>Google AdMob</strong> shows the banner ad (see <A href="#ads">Ads</A>).
           </li>
           <li>
             <strong>Apple and Google</strong> provide the app stores and notification delivery, under their own
@@ -136,6 +167,10 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
           </li>
           <li>
             <strong>Notifications:</strong> for borrow requests, handovers and reminders.
+          </li>
+          <li>
+            <strong>Tracking (iPhone):</strong> lets ads be personalised. Saying no still shows the same number of
+            ads, just not personalised ones.
           </li>
         </List>
         <P>Each one is optional, and you can turn it off at any time in your phone's settings.</P>
