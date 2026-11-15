@@ -14,7 +14,7 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
   return (
     <LegalPage
       title="Delete your account and data"
-      updated="8 November 2026"
+      updated="15 November 2026"
       onBackToHome={onBackToHome}
       intro={
         <p>
@@ -54,7 +54,10 @@ export default function DataDeletion({ onBackToHome }: DataDeletionProps) {
             Your library: every item you own, with its photos and its loan history. Friends who borrowed something from
             you lose the record of that loan too.
           </li>
-          <li>Your friend connections, borrow requests, favourites and "tell me when it's available" requests.</li>
+          <li>
+            Your friend connections, friend groups (and your place in other people's groups), borrow requests,
+            favourites and "tell me when it's available" requests.
+          </li>
           <li>Your push notification token and the contact-matching codes for your email and phone.</li>
         </List>
         <P>

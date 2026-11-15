@@ -12,7 +12,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
   return (
     <LegalPage
       title="Privacy policy"
-      updated="10 November 2026"
+      updated="15 November 2026"
       onBackToHome={onBackToHome}
       intro={
         <p>
@@ -39,7 +39,8 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
           <li>
             <strong>Friends and lending:</strong> who you're friends with, borrow requests and the notes on them, loan
             dates, due dates, returns and borrowing history. Also items you've favourited or asked to be told about when
-            they're available.
+            they're available, and any friend groups you make (their names, who's in them, and which items each group
+            can see). Only you can see your groups.
           </li>
           <li>
             <strong>Notifications:</strong> a push token from Apple or Google that lets us send notifications to your
@@ -69,8 +70,9 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
       <Section title="Who can see your information">
         <List>
           <li>
-            <strong>Friends you add</strong> can see your name, photo and library, what you've lent them and their
-            borrowing history with you.
+            <strong>Friends you add</strong> can see your name, photo and the items in your library you share with them
+            (all of it, unless you limit an item to some of your friend groups), what you've lent them and their
+            borrowing history with you. They're never told which group you've put them in.
           </li>
           <li>
             <strong>Other Lenderoo users</strong> can find you by searching for your name or email address, or with
