@@ -43,8 +43,12 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
             can see). Only you can see your groups.
           </li>
           <li>
-            <strong>Notifications:</strong> a push token from Apple or Google that lets us send notifications to your
-            device.
+            <strong>Notifications:</strong> a push token from Apple or Google for each phone or tablet you're signed in
+            on, so we can send notifications to it. Signing out on a device removes its token.
+          </li>
+          <li>
+            <strong>App version:</strong> which version of Lenderoo you have installed (and your phone's operating system
+            version), so we know who has the latest update. Only we can see it.
           </li>
           <li>
             <strong>Feedback you send:</strong> your comment, any screenshots you attach, your device model, operating
